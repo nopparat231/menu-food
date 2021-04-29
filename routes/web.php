@@ -23,3 +23,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('admin/home',[HomeController::class, 'adminHome'])->name('admin.home')->middleware(('is_admin'));
+
+Route::post('HomeController/Select2' , [HomeController::class, 'Select2'])->name('select2');

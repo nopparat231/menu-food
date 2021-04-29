@@ -11,7 +11,10 @@
     <title>{{ config('app.name', 'Menu-Food') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+
+    <!-- Scripts Select2 -->
+    <script src="{{ asset('js/select2.min.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,6 +22,24 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Styles Select2 -->
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
+
+    <style>
+        .select2-selection__rendered {
+            line-height: 31px !important;
+        }
+
+        .select2-container .select2-selection--single {
+            height: 35px !important;
+        }
+
+        .select2-selection__arrow {
+            height: 34px !important;
+        }
+
+    </style>
+
 </head>
 
 <body>
@@ -39,12 +60,6 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-
-                    <form class="d-flex">
-                        <input class="form-control mr-1" type="search" placeholder="ค้นหาร้าน" aria-label="Search">
-                        <button class="btn btn-outline-success col-md-3" type="submit">ค้นหา</button>
-                    </form>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -69,7 +84,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
+                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -88,6 +103,39 @@
             @yield('content')
         </main>
     </div>
+
+
+    <!-- Script -->
+    <script type="text/javascript">
+        // CSRF Token
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        $(document).ready(function() {
+            $("#selRest").select2({
+                ajax: {
+                    url: "{{ route('select2') }}",
+                    type: "post",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function(params) {
+                        return {
+                            _token: CSRF_TOKEN,
+                            search: params.term // search term
+                        };
+                    },
+                    processResults: function(response) {
+                        return {
+                            results: response
+                        };
+                    },
+                    cache: true
+                }
+
+            });
+
+        });
+
+    </script>
+
 </body>
 
 </html>

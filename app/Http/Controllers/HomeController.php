@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -29,5 +30,30 @@ class HomeController extends Controller
     public function adminHome()
     {
         return view('adminHome');
+    }
+
+    public function Select2(Request $request)
+    {
+                /*
+        AJAX request
+        */
+        $search = $request->search;
+
+        if ($search == '') {
+            $restaurants = Restaurant::orderby('restaurant_name', 'asc')->select('id', 'restaurant_name')->limit(5)->get();
+        } else {
+            $restaurants = Restaurant::orderby('restaurant_name', 'asc')->select('id', 'restaurant_name')->where('restaurant_name', 'like', '%' . $search . '%')->limit(5)->get();
+        }
+
+        $response = array();
+        foreach ($restaurants as $restaurant) {
+            $response[] = array(
+                "id" => $restaurant->id,
+                "restaurant_name" => $restaurant->restaurant_name
+            );
+        }
+
+        echo json_encode($response);
+        exit;
     }
 }
