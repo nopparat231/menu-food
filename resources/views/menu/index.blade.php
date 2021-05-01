@@ -18,6 +18,7 @@
                         </div>
                     </div>
                 </div>
+
                 @foreach ($menu as $key => $value)
 
                 <div class="card mb-3" style="max-width: 540rem;">
@@ -29,7 +30,7 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">{{$value->menu_name}}</h5>
-                                <p class="card-text"><small class="text-muted">จำนวนคิวรอ 1 คิว</small></p>
+                                <p class="card-text"><small class="text-muted">จำนวนคิวรอ {{1}} คิว</small></p>
                                 <a href="#" class="btn btn-primary">สั่งอาหาร</a>
                             </div>
                         </div>
@@ -38,6 +39,7 @@
 
                 @endforeach
 
+                {!! $menu->links() !!}    
             </div>
         </div>
     </div>

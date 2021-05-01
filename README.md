@@ -1,6 +1,8 @@
 ### ตั้งค่า
 ...
 
+php artisan migrate
+php artisan make:controller OrdersController --resource
 php artisan serve
 
 ### รูปตัวอย่าง

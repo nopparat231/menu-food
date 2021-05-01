@@ -11,7 +11,6 @@ class MenuController extends Controller
     public function index()
     {
         $menu = Menu::latest()->paginate(5);
-        //$menu = Menu::select('id', 'restaurant_name');
         return view('menu.index', compact('menu'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
