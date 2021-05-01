@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -25,3 +26,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('admin/home',[HomeController::class, 'adminHome'])->name('admin.home')->middleware(('is_admin'));
 
 Route::post('HomeController/Select2' , [HomeController::class, 'Select2'])->name('select2');
+
+Route::resource('menu', MenuController::class);
