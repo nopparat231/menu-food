@@ -49,7 +49,7 @@ class HomeController extends Controller
         foreach ($restaurants as $restaurant) {
             $response[] = array(
                 "id" => $restaurant->id,
-                "restaurant_name" => $restaurant->restaurant_name
+                "text" => $restaurant->restaurant_name
             );
         }
 

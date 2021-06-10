@@ -30,9 +30,8 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">{{$value->menu_name}}</h5>
-                                <p class="card-text"><small class="text-muted">จำนวนคิวรอ <b id="orders_status" data-id="1">1</b> คิว</small></p>
-                                <input type="hidden" name="id" id="menu_id" value="{{$value->id}}">
-                                <button id="saveBtn" class="btn btn-primary">สั่งอาหาร</button>
+                                <p class="card-text"><small class="text-muted">จำนวนคิวรอ {{1}} คิว</small></p>
+                                <a href="#" class="btn btn-primary">สั่งอาหาร</a>
                             </div>
                         </div>
                     </div>
@@ -47,11 +46,3 @@
 
 
 @endsection
-
-@push('ajax_crud')
-
-{{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> --}}
-
-{{-- <script src="{{ asset('js/ajax.js') }}"></script> --}}
-
-@endpush 

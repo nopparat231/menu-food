@@ -13,7 +13,7 @@ class CreateMenu extends Migration
      */
     public function up()
     {
-        Schema::create('menu', function (Blueprint $table) {
+        Schema::create('menus', function (Blueprint $table) {
 
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
