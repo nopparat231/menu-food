@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RestaurantController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,10 +27,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('home', [HomeController::class, 'index'])->name('home');
 Route::get('admin/home',[HomeController::class, 'adminHome'])->name('admin.home')->middleware(('is_admin'));
 
-Route::get('Select2' , [RestaurantController::class, 'index'])->name('select2');
+Route::post('Select2' , [HomeController::class, 'Select2'])->name('select2');
 
 Route::resource('menu', MenuController::class);
 
