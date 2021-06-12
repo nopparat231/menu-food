@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Menu-Food') }}</title>
 
     <!-- Scripts -->
-    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Scripts Select2 -->
     <script src="{{ asset('js/select2.min.js') }}"></script>
@@ -121,7 +121,7 @@ $(document).ready(function () {
     $("#selRest").select2({
         ajax: {
             url: "{{ route('select2') }}",
-            type: "post",
+            type: "get",
             dataType: "json",
             delay: 250,
             data: function (params) {

@@ -14,15 +14,27 @@ class RestaurantController extends Controller
      */
     public function index(Request $request)
     {
-        $Restaurants = [];
+                /*
+        AJAX request
+        */
+        $search = $request->search;
 
-        if($request->has('q')){
-            $search = $request->q;
-            $Restaurants =Restaurant::select("id", "restaurant_name")
-            		->where('restaurant_name', 'LIKE', "%$search%")
-            		->get();
+        if ($search == '') {
+            $restaurants = Restaurant::orderby('restaurant_name', 'asc')->select('id', 'restaurant_name')->limit(5)->get();
+        } else {
+            $restaurants = Restaurant::orderby('restaurant_name', 'asc')->select('id', 'restaurant_name')->where('restaurant_name', 'like', '%' . $search . '%')->limit(5)->get();
         }
-        return response()->json($Restaurants);
+
+        $response = array();
+        foreach ($restaurants as $restaurant) {
+            $response[] = array(
+                "id" => $restaurant->id,
+                "text" => $restaurant->restaurant_name
+            );
+        }
+
+        echo json_encode($response);
+        exit;
     }
 
     /**

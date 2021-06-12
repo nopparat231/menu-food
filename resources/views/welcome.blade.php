@@ -19,28 +19,48 @@
                     </div>
                 </div>
 
-                @foreach ($menu as $key => $value)
+                @php
+                $i=1;
+                @endphp
 
-                <div class="card mb-3" style="max-width: 540rem;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="{{$value->menu_img}}"
-                                style="width: 100%;height: 100%;" alt="กระเพราหมูสับ">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">{{$value->menu_name}}</h5>
-                                <p class="card-text"><small class="text-muted">จำนวนคิวรอ <b id="orders_status" data-id="1">1</b> คิว</small></p>
-                                <input type="hidden" name="id" id="menu_id" value="{{$value->id}}">
-                                <button id="saveBtn" class="btn btn-primary">สั่งอาหาร</button>
+                @foreach ($menus as $menu)
+
+                    @php
+                        $name_res = $menu->restaurant_name;
+                        
+                    @endphp
+
+                    @if ($name_res === $menu->restaurant_name)
+                        <h2>{{ $menu->restaurant_name }}</h2>
+                        <hr>
+                    @endif
+                    @php
+                       $name_res = $name_res.$i;
+$i++
+                    @endphp
+                    {{$name_res}}
+                    <div class="card mb-3" style="max-width: 540rem;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{ $menu->menu_img }}" style="width: 100%;height: 100%;" alt="กระเพราหมูสับ">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $menu->menu_name }}</h5>
+                                    <p class="card-text"><small class="text-muted">จำนวนคิวรอ <b id="orders_status"
+                                                data-id="1">1</b> คิว</small></p>
+                                    <input type="hidden" name="id" id="menu_id" value="{{ $menu->id }}">
+                                    <button id="saveBtn" class="btn btn-primary">สั่งอาหาร</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+
+
 
                 @endforeach
 
-                {!! $menu->links() !!}    
+
             </div>
         </div>
     </div>
@@ -50,8 +70,8 @@
 
 @push('ajax_crud')
 
-{{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> --}}
 
-{{-- <script src="{{ asset('js/ajax.js') }}"></script> --}}
+    {{-- <script src="{{ asset('js/ajax.js') }}"></script> --}}
 
-@endpush 
+@endpush

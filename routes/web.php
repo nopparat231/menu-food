@@ -19,22 +19,18 @@ use App\Models\Menu;
 |
 */
 
-Route::get('/', function () {
-    $menu = Menu::latest()->paginate(5);
-        return view('welcome', compact('menu'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
-});
+Route::get('/', [MenuController::class ,'index']);
 
 Auth::routes();
 
 Route::get('home', [HomeController::class, 'index'])->name('home');
-Route::get('admin/home',[HomeController::class, 'adminHome'])->name('admin.home')->middleware(('is_admin'));
+Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware(('is_admin'));
 
-Route::post('Select2' , [HomeController::class, 'Select2'])->name('select2');
+Route::get('Select2', [RestaurantController::class, 'index'])->name('select2');
 
 Route::resource('menu', MenuController::class);
 
-Route::resource('order',OrderController::class);
+Route::resource('order', OrderController::class);
 
 // Route::get('/home', [App\Http\Controllers\TodoController::class, 'index']);
 // Route::post('/todos/create', [App\Http\Controllers\TodoController::class, 'store']);

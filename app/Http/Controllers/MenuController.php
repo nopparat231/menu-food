@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MenuController extends Controller
 {
 
     public function index()
     {
-        $menu = Menu::latest()->paginate(5);
-        return view('menu.index', compact('menu'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        $menus =  DB::table('menus')
+        ->join('restaurants','restaurants.id','=','menus.restaurant_id')
+        ->orderBy('menus.restaurant_id','DESC')
+        ->get();
+        return view('welcome',['menus' => $menus]);
     }
 
     public function create()
