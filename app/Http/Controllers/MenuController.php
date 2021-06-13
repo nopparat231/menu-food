@@ -15,7 +15,11 @@ class MenuController extends Controller
         ->join('restaurants','restaurants.id','=','menus.restaurant_id')
         ->orderBy('menus.restaurant_id','DESC')
         ->get();
-        return view('welcome',['menus' => $menus]);
+        $gmenus =  DB::table('menus')
+        ->select('restaurant_id', DB::raw('count(*) as total'))
+        ->groupBy('restaurant_id')
+        ->get();
+        return view('welcome')->with(['menus' => $menus])->with(['gmenus' => $gmenus]);
     }
 
     public function create()
