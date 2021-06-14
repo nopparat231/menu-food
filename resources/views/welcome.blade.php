@@ -19,51 +19,46 @@
                     </div>
                 </div>
 
-                @php
-                //echo json_encode( $menus, JSON_UNESCAPED_UNICODE );
-                //echo json_encode( $menus, JSON_UNESCAPED_UNICODE );
-                //echo print_r($menus);
-                //$names = $name[1];
-                //echo $names;
-                //echo print_r($gmenus);
-                $countMenus = count($menus);
-               //echo '<br>'.$gmenus[0]->restaurant_id;
-                $r = 0;
-                $a = 0;
-                $g = 0;
-                //echo $countMenus;
-            @endphp
 
-      @for ($g = 0;$g < count($gmenus);$g++)
+                @for ($g = 0; $g < count($gmenus); $g++) <br>
 
-      {{ $gmenus[$g]->restaurant_id }}
+                    @foreach ($menus as $menu)
+                        @if ($menu->restaurant_id == $gmenus[$g]->restaurant_id)
+                            <h1 style="margin-bottom: 0px">{{ $menu->restaurant_name }}</h1>
+                        @break
+                    @endif
+                @endforeach
 
-          @for ($i = 0;$i < $countMenus;$i++)
-              
-          <div class="card mb-3" style="max-width: 540rem;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="{{ $menus[$i]->menu_img }}" style="width: 100%;height: 100%;" alt="กระเพราหมูสับ">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $menus[$i]->menu_name }}</h5>
-                        <p class="card-text"><small class="text-muted">จำนวนคิวรอ <b id="orders_status"
-                                    data-id="1">1</b> คิว</small></p>
-                        <input type="hidden" name="id" id="menu_id" value="{{ $menus[$i]->id }}">
-                        <button id="saveBtn" class="btn btn-primary">สั่งอาหาร</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+                <hr style="margin-top: 0px">
 
-          @endfor
-          
-      @endfor
-        
-    
+                @foreach ($menus as $menu)
 
-            
+                    @if ($menu->restaurant_id == $gmenus[$g]->restaurant_id)
+
+
+                        <div class="card mb-3" style="max-width: 540rem;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{ $menu->menu_img }}" style="width: 100%;height: 100%;"
+                                        alt="กระเพราหมูสับ">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $menu->menu_name }}</h5>
+                                        <p class="card-text"><small class="text-muted">จำนวนคิวรอ <b id="orders_status"
+                                                    data-id="1">1</b> คิว</small></p>
+                                        <input type="hidden" name="id" id="menu_id" value="{{ $menu->id }}">
+                                        <button id="saveBtn" class="btn btn-primary">สั่งอาหาร</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    @endif
+                @endforeach
+
+                @endfor
+
 
             </div>
         </div>

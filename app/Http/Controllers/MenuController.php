@@ -15,11 +15,20 @@ class MenuController extends Controller
         ->join('restaurants','restaurants.id','=','menus.restaurant_id')
         ->orderBy('menus.restaurant_id','DESC')
         ->get();
+
         $gmenus =  DB::table('menus')
         ->select('restaurant_id', DB::raw('count(*) as total'))
         ->groupBy('restaurant_id')
         ->get();
+        
         return view('welcome')->with(['menus' => $menus])->with(['gmenus' => $gmenus]);
+    }
+
+    public function findn(Request $request)
+    {
+        $findn = DB::table('restaurants')
+            ->select('id', 'restaurant_name')->where('restaurant_name', 'like', '%' . $request . '%')->limit(1)->get();
+            return $findn;
     }
 
     public function create()
