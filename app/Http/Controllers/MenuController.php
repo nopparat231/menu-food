@@ -26,8 +26,8 @@ class MenuController extends Controller
 
     public function findn(Request $request)
     {
-        $findn = DB::table('restaurants')
-            ->select('id', 'restaurant_name')->where('restaurant_name', 'like', '%' . $request . '%')->limit(1)->get();
+        $findn = DB::table('menus')
+            ->select('*')->where('restaurant_name', 'like', '%' . $request . '%')->limit(1)->get();
             return $findn;
     }
 

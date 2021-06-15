@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddToCartController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RestaurantController;
@@ -31,6 +32,9 @@ Route::get('Select2', [RestaurantController::class, 'index'])->name('select2');
 Route::resource('menu', MenuController::class);
 
 Route::resource('order', OrderController::class);
+
+Route::post('add-to-cart', [AddToCartController::class, 'addtocart']);
+Route::get('/load-cart-data', [AddToCartController::class, 'cartloadbyajax']);
 
 // Route::get('/home', [App\Http\Controllers\TodoController::class, 'index']);
 // Route::post('/todos/create', [App\Http\Controllers\TodoController::class, 'store']);

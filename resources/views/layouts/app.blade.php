@@ -20,6 +20,9 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    {{-- Boostrap Icon --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Styles Select2 -->
@@ -57,11 +60,16 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav ml-auto">
 
                     </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a type="button" class="btn" style="padding: 0;font-size: 1.5rem;">
+                                <span class="badge badge-pill red"><i class="bi bi-cart"></i> 0</span>
+                            </a>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -85,7 +93,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                             document.getElementById('logout-form').submit();">
+                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -95,6 +103,7 @@
                                 </div>
                             </li>
                         @endguest
+
                     </ul>
                 </div>
             </div>
@@ -112,32 +121,32 @@
 
 <script>
     // CSRF Token
-$.ajaxSetup({
-    headers: {
-        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-    },
-});
-$(document).ready(function () {
-    $("#selRest").select2({
-        ajax: {
-            url: "{{ route('select2') }}",
-            type: "get",
-            dataType: "json",
-            delay: 250,
-            data: function (params) {
-                return {
-                    search: params.term, // search term
-                };
-            },
-            processResults: function (response) {
-                return {
-                    results: response,
-                };
-            },
-            cache: true,
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
     });
-});
+    $(document).ready(function() {
+        $("#selRest").select2({
+            ajax: {
+                url: "{{ route('select2') }}",
+                type: "get",
+                dataType: "json",
+                delay: 250,
+                data: function(params) {
+                    return {
+                        search: params.term, // search term
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response,
+                    };
+                },
+                cache: true,
+            },
+        });
+    });
 
 </script>
 
