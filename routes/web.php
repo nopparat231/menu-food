@@ -33,8 +33,13 @@ Route::resource('menu', MenuController::class);
 
 Route::resource('order', OrderController::class);
 
+Route::get('/cart',[AddToCartController::class, 'index']);
 Route::post('add-to-cart', [AddToCartController::class, 'addtocart']);
+Route::post('update-to-cart',[AddToCartController::class, 'updatetocart']);
 Route::get('/load-cart-data', [AddToCartController::class, 'cartloadbyajax']);
+Route::delete('delete-from-cart',[AddToCartController::class, 'deletefromcart']);
+Route::get('clear-cart',[AddToCartController::class, 'clearcart']);
+
 
 // Route::get('/home', [App\Http\Controllers\TodoController::class, 'index']);
 // Route::post('/todos/create', [App\Http\Controllers\TodoController::class, 'store']);

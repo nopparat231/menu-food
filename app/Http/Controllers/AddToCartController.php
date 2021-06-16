@@ -20,8 +20,8 @@ class AddToCartController extends Controller
     public function addtocart(Request $request)
     {
 
-        $prod_id = $request->input('product_id');
-        $quantity = $request->input('quantity');
+        $menu_id = $request->input('menu_id');
+        $order_quantity = $request->input('order_quantity');
 
         if (Cookie::get('shopping_cart')) {
             $cookie_data = stripslashes(Cookie::get('shopping_cart'));
@@ -31,12 +31,12 @@ class AddToCartController extends Controller
         }
 
         $item_id_list = array_column($cart_data, 'item_id');
-        $prod_id_is_there = $prod_id;
+        $menu_id_is_there = $menu_id;
 
-        if (in_array($prod_id_is_there, $item_id_list)) {
+        if (in_array($menu_id_is_there, $item_id_list)) {
             foreach ($cart_data as $keys => $values) {
-                if ($cart_data[$keys]["item_id"] == $prod_id) {
-                    $cart_data[$keys]["item_quantity"] = $request->input('quantity');
+                if ($cart_data[$keys]["item_id"] == $menu_id) {
+                    $cart_data[$keys]["item_quantity"] = $request->input('order_quantity');
                     $item_data = json_encode($cart_data);
                     $minutes = 60;
                     Cookie::queue(Cookie::make('shopping_cart', $item_data, $minutes));
@@ -44,14 +44,14 @@ class AddToCartController extends Controller
                 }
             }
         } else {
-            $products = MenuController::findn($prod_id);
+            $products = MenuController::findn($menu_id);
             $prod_name = $products->name;
             $prod_image = $products->image;
             $priceval = $products->price;
 
             if ($products) {
                 $item_array = array(
-                    'item_id' => $prod_id,
+                    'menu_id' => $menu_id,
                     'item_name' => $prod_name,
                     'item_quantity' => $quantity,
                     'item_price' => $priceval,
@@ -83,5 +83,60 @@ class AddToCartController extends Controller
             die;
             return;
         }
+    }
+
+    public function updatetocart(Request $request)
+    {
+        $prod_id = $request->input('product_id');
+        $quantity = $request->input('quantity');
+
+        if (Cookie::get('shopping_cart')) {
+            $cookie_data = stripslashes(Cookie::get('shopping_cart'));
+            $cart_data = json_decode($cookie_data, true);
+
+            $item_id_list = array_column($cart_data, 'item_id');
+            $prod_id_is_there = $prod_id;
+
+            if (in_array($prod_id_is_there, $item_id_list)) {
+                foreach ($cart_data as $keys => $values) {
+                    if ($cart_data[$keys]["item_id"] == $prod_id) {
+                        $cart_data[$keys]["item_quantity"] =  $quantity;
+                        $item_data = json_encode($cart_data);
+                        $minutes = 60;
+                        Cookie::queue(Cookie::make('shopping_cart', $item_data, $minutes));
+                        return response()->json(['status' => '"' . $cart_data[$keys]["item_name"] . '" Quantity Updated']);
+                    }
+                }
+            }
+        }
+    }
+
+    public function deletefromcart(Request $request)
+    {
+        $prod_id = $request->input('product_id');
+
+        $cookie_data = stripslashes(Cookie::get('shopping_cart'));
+        $cart_data = json_decode($cookie_data, true);
+
+        $item_id_list = array_column($cart_data, 'item_id');
+        $prod_id_is_there = $prod_id;
+
+        if (in_array($prod_id_is_there, $item_id_list)) {
+            foreach ($cart_data as $keys => $values) {
+                if ($cart_data[$keys]["item_id"] == $prod_id) {
+                    unset($cart_data[$keys]);
+                    $item_data = json_encode($cart_data);
+                    $minutes = 60;
+                    Cookie::queue(Cookie::make('shopping_cart', $item_data, $minutes));
+                    return response()->json(['status' => 'Item Removed from Cart']);
+                }
+            }
+        }
+    }
+
+    public function clearcart()
+    {
+        Cookie::queue(Cookie::forget('shopping_cart'));
+        return response()->json(['status' => 'Your Cart is Cleared']);
     }
 }

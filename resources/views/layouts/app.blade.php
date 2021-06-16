@@ -67,7 +67,10 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a type="button" class="btn" style="padding: 0;font-size: 1.5rem;">
-                                <span class="badge badge-pill red"><i class="bi bi-cart"></i> 0</span>
+                                <i class="bi bi-cart"></i>
+                                <span class="basket-item-count">
+                                    <span class="badge badge-pill red"> 0 </span>
+                                </span>
                             </a>
                         </li>
                         <!-- Authentication Links -->
