@@ -13,7 +13,7 @@ class AddToCartController extends Controller
     {
         $cookie_data = stripslashes(Cookie::get('shopping_cart'));
         $cart_data = json_decode($cookie_data, true);
-        return view('frontend.cart')
+        return view('Cart')
             ->with('cart_data', $cart_data);
     }
 
@@ -53,7 +53,7 @@ class AddToCartController extends Controller
                 $item_array = array(
                     'menu_id' => $menu_id,
                     'item_name' => $prod_name,
-                    'item_quantity' => $quantity,
+                    'item_quantity' => $order_quantity,
                     'item_price' => $priceval,
                     'item_image' => $prod_image
                 );

@@ -12,7 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-
+    <script src="{{ asset('js/Cart.js') }}"></script>
     <!-- Scripts Select2 -->
     <script src="{{ asset('js/select2.min.js') }}"></script>
 
@@ -27,6 +27,15 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Styles Select2 -->
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
+
+    
+<!-- JavaScript AlertifyJS -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 
     <style>
         .select2-selection__rendered {
@@ -66,7 +75,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a type="button" class="btn" style="padding: 0;font-size: 1.5rem;">
+                            <a href="/Cart" class="btn" style="padding: 0;font-size: 1.5rem;">
                                 <i class="bi bi-cart"></i>
                                 <span class="basket-item-count">
                                     <span class="badge badge-pill red"> 0 </span>

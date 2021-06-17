@@ -1,16 +1,6 @@
-@extends('layouts.frontend')
+@extends('layouts.app')
 
 @section('content')
-
-    <section class="bg-success">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 mt-2 py-3">
-                    <h5><a href="/" class="text-dark">Home</a> › Cart</h5>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section class="section">
         <div class="container">
@@ -89,7 +79,7 @@
 
                                     <div class="col-md-8 col-sm-12 estimate-ship-tax">
                                         <div>
-                                            <a href="{{ url('collections') }}"
+                                            <a href="{{ url('/') }}"
                                                 class="btn btn-upper btn-warning outer-left-xs">Continue Shopping</a>
                                         </div>
                                     </div><!-- /.estimate-ship-tax -->
@@ -150,7 +140,7 @@
                             <div class="col-md-12 mycard py-5 text-center">
                                 <div class="mycards">
                                     <h4>Your cart is currently empty.</h4>
-                                    <a href="{{ url('collections') }}"
+                                    <a href="{{ url('/') }}"
                                         class="btn btn-upper btn-primary outer-left-xs mt-5">Continue Shopping</a>
                                 </div>
                             </div>

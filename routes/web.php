@@ -33,7 +33,7 @@ Route::resource('menu', MenuController::class);
 
 Route::resource('order', OrderController::class);
 
-Route::get('/cart',[AddToCartController::class, 'index']);
+Route::get('/Cart',[AddToCartController::class, 'index']);
 Route::post('add-to-cart', [AddToCartController::class, 'addtocart']);
 Route::post('update-to-cart',[AddToCartController::class, 'updatetocart']);
 Route::get('/load-cart-data', [AddToCartController::class, 'cartloadbyajax']);

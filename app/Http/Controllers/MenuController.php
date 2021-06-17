@@ -12,15 +12,24 @@ class MenuController extends Controller
     public function index()
     {
         $menus =  DB::table('menus')
-        ->join('restaurants','restaurants.id','=','menus.restaurant_id')
-        ->orderBy('menus.restaurant_id','DESC')
-        ->get();
+            ->join('restaurants', 'restaurants.id', '=', 'menus.restaurant_id')
+            ->select(
+                'menus.id as menu_id',
+                'menus.user_id',
+                'menus.restaurant_id',
+                'menus.menu_name',
+                'menus.menu_img',
+                'menus.menu_detail',
+                'restaurant_name'
+            )
+            ->orderBy('menus.restaurant_id', 'DESC')
+            ->get();
 
         $gmenus =  DB::table('menus')
-        ->select('restaurant_id', DB::raw('count(*) as total'))
-        ->groupBy('restaurant_id')
-        ->get();
-        
+            ->select('restaurant_id', DB::raw('count(*) as total'))
+            ->groupBy('restaurant_id')
+            ->get();
+
         return view('welcome')->with(['menus' => $menus])->with(['gmenus' => $gmenus]);
     }
 
@@ -28,7 +37,7 @@ class MenuController extends Controller
     {
         $findn = DB::table('menus')
             ->select('*')->where('restaurant_name', 'like', '%' . $request . '%')->limit(1)->get();
-            return $findn;
+        return $findn;
     }
 
     public function create()
