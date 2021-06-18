@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
-use App\Http\Controllers\MenuController;
+use Illuminate\Support\Facades\DB;
 
 class AddToCartController extends Controller
 {
@@ -35,34 +35,39 @@ class AddToCartController extends Controller
 
         if (in_array($menu_id_is_there, $item_id_list)) {
             foreach ($cart_data as $keys => $values) {
-                if ($cart_data[$keys]["item_id"] == $menu_id) {
-                    $cart_data[$keys]["item_quantity"] = $request->input('order_quantity');
-                    $item_data = json_encode($cart_data);
+                if ($cart_data[$keys]["menu_id"] == $menu_id) {
+                    $cart_data[$keys]["order_quantity"] = $request->input('order_quantity');
+                    $menu_data = json_encode($cart_data);
                     $minutes = 60;
-                    Cookie::queue(Cookie::make('shopping_cart', $item_data, $minutes));
-                    return response()->json(['status' => '"' . $cart_data[$keys]["item_name"] . '" Already Added to Cart', 'status2' => '2']);
+                    Cookie::queue(Cookie::make('shopping_cart', $menu_data, $minutes));
+                    return response()->json(['status' => '"' . $cart_data[$keys]["menu_name"] . '" Already Added to Cart', 'status2' => '2']);
                 }
             }
-        } else {
-            $products = MenuController::findn($menu_id);
-            $prod_name = $products->name;
-            $prod_image = $products->image;
-            $priceval = $products->price;
+        }
+        else
+        {
+            $menu = DB::table('menus')
+            ->where('id', $menu_id )->first();
+            $menu_name = $menu->menu_name;
+            $menu_image = $menu->menu_img;
+            $menu_price = $menu->menu_price;
 
-            if ($products) {
+            if($menu)
+            {
                 $item_array = array(
-                    'menu_id' => $menu_id,
-                    'item_name' => $prod_name,
-                    'item_quantity' => $order_quantity,
-                    'item_price' => $priceval,
-                    'item_image' => $prod_image
+                    'id' => $menu_id,
+                    'menu_name' => $menu_name,
+                    'order_quantity' => $order_quantity,
+                    'menu_image' => $menu_image,
+                    'menu_price' => $menu_price
+                    
                 );
                 $cart_data[] = $item_array;
 
                 $item_data = json_encode($cart_data);
                 $minutes = 60;
                 Cookie::queue(Cookie::make('shopping_cart', $item_data, $minutes));
-                return response()->json(['status' => '"' . $prod_name . '" Added to Cart']);
+                return response()->json(['status'=>'"'.$menu_name.'" Added to Cart']);
             }
         }
     }

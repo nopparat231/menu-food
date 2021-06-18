@@ -56,7 +56,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color: #df87c9;">
+        <nav class="navbar  navbar-expand-md navbar-dark fixed-top navbar-light shadow-sm" style="background-color: #df87c9;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Menu-Food') }}
@@ -121,7 +121,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main style="margin-top: 5rem">
             @yield('content')
         </main>
     </div>

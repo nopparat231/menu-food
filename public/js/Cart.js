@@ -48,15 +48,16 @@ $(document).ready(function () {
             .val();
 
         $.ajax({
-            // url: "/add-to-cart",
-            // method: "POST",
+            url: "/add-to-cart",
+            method: "POST",
             data: {
                 order_quantity: order_quantity,
                 menu_id: menu_id,
             },
             success: function (response) {
                 alertify.set("notifier", "position", "top-right");
-                alertify.success(menu_name);
+                alertify.success(response.status);
+                cartload();
             },
         });
     });

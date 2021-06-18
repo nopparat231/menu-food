@@ -31,18 +31,18 @@
                                                     <tr class="cartpage">
                                                         <td class="cart-image">
                                                             <a class="entry-thumbnail" href="javascript:void(0)">
-                                                                <img src="{{ asset('admin/uploads/productcatelist/' . $data['item_image']) }}"
+                                                                <img src="{{ $data['menu_image'] }}"
                                                                     width="70px" alt="">
                                                             </a>
                                                         </td>
                                                         <td class="cart-product-name-info">
                                                             <h4 class='cart-product-description'>
-                                                                <a href="javascript:void(0)">{{ $data['item_name'] }}</a>
+                                                                {{ $data['menu_name'] }}
                                                             </h4>
                                                         </td>
                                                         <td class="cart-product-sub-total">
                                                             <span
-                                                                class="cart-sub-total-price">{{ number_format($data['item_price'], 2) }}</span>
+                                                                class="cart-sub-total-price">{{ number_format($data['menu_price'], 2) }}</span>
                                                         </td>
                                                         <td class="cart-product-quantity" width="130px">
                                                             <div class="input-group quantity">
@@ -52,7 +52,7 @@
                                                                 </div>
                                                                 <input type="text" class="qty-input form-control"
                                                                     maxlength="2" max="10"
-                                                                    value="{{ $data['item_quantity'] }}">
+                                                                    value="{{ $data['order_quantity'] }}">
                                                                 <div class="input-group-append increment-btn changeQuantity"
                                                                     style="cursor: pointer">
                                                                     <span class="input-group-text">+</span>
@@ -61,14 +61,14 @@
                                                         </td>
                                                         <td class="cart-product-grand-total">
                                                             <span
-                                                                class="cart-grand-total-price">{{ number_format($data['item_quantity'] * $data['item_price'], 2) }}</span>
+                                                                class="cart-grand-total-price">{{ number_format($data['order_quantity'] * $data['menu_price'], 2) }}</span>
                                                         </td>
                                                         <td style="font-size: 20px;">
                                                             <button type="button" class="delete_cart_data">
                                                                 <li class="fa fa-trash-o"></li> Delete
                                                             </button>
                                                         </td>
-                                                        @php $total = $total + ($data["item_quantity"] * $data["item_price"]) @endphp
+                                                        @php $total = $total + ($data["order_quantity"] * $data["menu_price"]) @endphp
                                                     </tr>
                                                 @endforeach
                                             </tbody>

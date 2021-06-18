@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2021 at 05:28 PM
+-- Generation Time: Jun 18, 2021 at 06:04 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -49,6 +49,7 @@ CREATE TABLE `menus` (
   `restaurant_id` varchar(255) NOT NULL,
   `menu_name` varchar(255) NOT NULL,
   `menu_img` varchar(255) NOT NULL,
+  `menu_price` int(11) NOT NULL,
   `menu_detail` varchar(255) NOT NULL,
   `menu_status` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -59,15 +60,15 @@ CREATE TABLE `menus` (
 -- Dumping data for table `menus`
 --
 
-INSERT INTO `menus` (`id`, `user_id`, `restaurant_id`, `menu_name`, `menu_img`, `menu_detail`, `menu_status`, `created_at`, `updated_at`) VALUES
-(1, '5', '2', 'Pizza', 'https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg', 'ทดสอบรายละเอียด', '0', NULL, NULL),
-(2, '4', '1', 'กระเพราหมูสับ ไข่ดาว', 'https://cdn.pixabay.com/photo/2016/07/20/00/49/thailand-food-1529442_960_720.jpg', 'ทดสอบรายละเอียด', '0', NULL, NULL),
-(3, '5', '2', 'Pizza', 'https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg', 'ทดสอบรายละเอียด', '0', NULL, NULL),
-(4, '4', '1', 'กระเพราหมูสับ ไข่ดาว', 'https://cdn.pixabay.com/photo/2016/07/20/00/49/thailand-food-1529442_960_720.jpg', 'ทดสอบรายละเอียด', '0', NULL, NULL),
-(5, '5', '2', 'Pizza', 'https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg', 'ทดสอบรายละเอียด', '0', NULL, NULL),
-(6, '4', '1', 'กระเพราหมูสับ ไข่ดาว', 'https://cdn.pixabay.com/photo/2016/07/20/00/49/thailand-food-1529442_960_720.jpg', 'ทดสอบรายละเอียด', '0', NULL, NULL),
-(7, '5', '2', 'Pizza', 'https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg', 'ทดสอบรายละเอียด', '0', NULL, NULL),
-(8, '4', '1', 'กระเพราหมูสับ ไข่ดาว', 'https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg', 'ทดสอบรายละเอียด', '0', NULL, NULL);
+INSERT INTO `menus` (`id`, `user_id`, `restaurant_id`, `menu_name`, `menu_img`, `menu_price`, `menu_detail`, `menu_status`, `created_at`, `updated_at`) VALUES
+(1, '5', '2', 'Pizza', 'https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg', 30, 'ทดสอบรายละเอียด', '0', NULL, NULL),
+(2, '4', '1', 'กระเพราหมูสับ ไข่ดาว', 'https://cdn.pixabay.com/photo/2016/07/20/00/49/thailand-food-1529442_960_720.jpg', 30, 'ทดสอบรายละเอียด', '0', NULL, NULL),
+(3, '5', '2', 'Pizza', 'https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg', 30, 'ทดสอบรายละเอียด', '0', NULL, NULL),
+(4, '4', '1', 'กระเพราหมูสับ ไข่ดาว', 'https://cdn.pixabay.com/photo/2016/07/20/00/49/thailand-food-1529442_960_720.jpg', 30, 'ทดสอบรายละเอียด', '0', NULL, NULL),
+(5, '5', '2', 'Pizza', 'https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg', 30, 'ทดสอบรายละเอียด', '0', NULL, NULL),
+(6, '4', '1', 'กระเพราหมูสับ ไข่ดาว', 'https://cdn.pixabay.com/photo/2016/07/20/00/49/thailand-food-1529442_960_720.jpg', 30, 'ทดสอบรายละเอียด', '0', NULL, NULL),
+(7, '5', '2', 'Pizza', 'https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg', 30, 'ทดสอบรายละเอียด', '0', NULL, NULL),
+(8, '4', '1', 'กระเพราหมูสับ ไข่ดาว', 'https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg', 30, 'ทดสอบรายละเอียด', '0', NULL, NULL);
 
 -- --------------------------------------------------------
 
