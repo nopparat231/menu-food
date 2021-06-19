@@ -30,12 +30,12 @@ class AddToCartController extends Controller
             $cart_data = array();
         }
 
-        $item_id_list = array_column($cart_data, 'item_id');
+        $item_id_list = array_column($cart_data, 'menu_id');
         $menu_id_is_there = $menu_id;
 
         if (in_array($menu_id_is_there, $item_id_list)) {
             foreach ($cart_data as $keys => $values) {
-                if ($cart_data[$keys]["menu_id"] == $menu_id) {
+                if ($cart_data[$keys]["id"] == $menu_id) {
                     $cart_data[$keys]["order_quantity"] = $request->input('order_quantity');
                     $menu_data = json_encode($cart_data);
                     $minutes = 60;
@@ -92,24 +92,24 @@ class AddToCartController extends Controller
 
     public function updatetocart(Request $request)
     {
-        $prod_id = $request->input('product_id');
-        $quantity = $request->input('quantity');
+        $prod_id = $request->input('menu_id');
+        $quantity = $request->input('order_quantity');
 
         if (Cookie::get('shopping_cart')) {
             $cookie_data = stripslashes(Cookie::get('shopping_cart'));
             $cart_data = json_decode($cookie_data, true);
 
-            $item_id_list = array_column($cart_data, 'item_id');
+            $item_id_list = array_column($cart_data, 'menu_id');
             $prod_id_is_there = $prod_id;
 
             if (in_array($prod_id_is_there, $item_id_list)) {
                 foreach ($cart_data as $keys => $values) {
-                    if ($cart_data[$keys]["item_id"] == $prod_id) {
-                        $cart_data[$keys]["item_quantity"] =  $quantity;
+                    if ($cart_data[$keys]["id"] == $prod_id) {
+                        $cart_data[$keys]["order_quantity"] =  $quantity;
                         $item_data = json_encode($cart_data);
                         $minutes = 60;
                         Cookie::queue(Cookie::make('shopping_cart', $item_data, $minutes));
-                        return response()->json(['status' => '"' . $cart_data[$keys]["item_name"] . '" Quantity Updated']);
+                        return response()->json(['status' => '"' . $cart_data[$keys]["menu_name"] . '" Quantity Updated']);
                     }
                 }
             }
@@ -118,17 +118,17 @@ class AddToCartController extends Controller
 
     public function deletefromcart(Request $request)
     {
-        $prod_id = $request->input('product_id');
+        $prod_id = $request->input('menu_id');
 
         $cookie_data = stripslashes(Cookie::get('shopping_cart'));
         $cart_data = json_decode($cookie_data, true);
 
-        $item_id_list = array_column($cart_data, 'item_id');
+        $item_id_list = array_column($cart_data, 'menu_id');
         $prod_id_is_there = $prod_id;
 
         if (in_array($prod_id_is_there, $item_id_list)) {
             foreach ($cart_data as $keys => $values) {
-                if ($cart_data[$keys]["item_id"] == $prod_id) {
+                if ($cart_data[$keys]["id"] == $prod_id) {
                     unset($cart_data[$keys]);
                     $item_data = json_encode($cart_data);
                     $minutes = 60;
