@@ -23,6 +23,7 @@ class CreateMenu extends Migration
             $table->string('restaurant_id');
             $table->string('menu_name');
             $table->string('menu_img');
+            $table->integer('menu_price');
             $table->string('menu_detail');
             $table->string('menu_status');
 
