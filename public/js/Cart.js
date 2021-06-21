@@ -121,9 +121,15 @@ $(document).ready(function () {
 
         var product_id = $(this).closest(".cartpage").find(".product_id").val();
 
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+        
         var data = {
             _token: $("input[name=_token]").val(),
-            product_id: product_id,
+            id: product_id,
         };
 
         // $(this).closest(".cartpage").remove();
@@ -133,6 +139,7 @@ $(document).ready(function () {
             type: "DELETE",
             data: data,
             success: function (response) {
+                //console.log(data)
                 window.location.reload();
             },
         });

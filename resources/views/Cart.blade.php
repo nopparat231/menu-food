@@ -27,12 +27,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="my-auto">
+
                                                 @foreach ($cart_data as $data)
                                                     <tr class="cartpage">
+                                                        <input type="hidden" name="product_id" class="product_id" value="{{ $data['id'] }}" >
                                                         <td class="cart-image">
                                                             <a class="entry-thumbnail" href="javascript:void(0)">
                                                                 <img src="{{ $data['menu_image'] }}"
-                                                                    width="70px" alt="">
+                                                                    width="70vh" alt="">
                                                             </a>
                                                         </td>
                                                         <td class="cart-product-name-info">
@@ -64,8 +66,8 @@
                                                                 class="cart-grand-total-price">{{ number_format($data['order_quantity'] * $data['menu_price'], 2) }}</span>
                                                         </td>
                                                         <td style="font-size: 20px;">
-                                                            <button type="button" class="delete_cart_data">
-                                                                <li class="fa fa-trash-o"></li> Delete
+                                                            <button type="button" class="delete_cart_data btn btn-outline-danger">
+                                                                <i class="bi bi-trash"></i> Delete
                                                             </button>
                                                         </td>
                                                         @php $total = $total + ($data["order_quantity"] * $data["menu_price"]) @endphp
