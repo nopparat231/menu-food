@@ -30,11 +30,11 @@
 
                                                 @foreach ($cart_data as $data)
                                                     <tr class="cartpage">
-                                                        <input type="hidden" name="product_id" class="product_id" value="{{ $data['id'] }}" >
+                                                        <input type="hidden" name="product_id" class="product_id"
+                                                            value="{{ $data['id'] }}">
                                                         <td class="cart-image">
                                                             <a class="entry-thumbnail" href="javascript:void(0)">
-                                                                <img src="{{ $data['menu_image'] }}"
-                                                                    width="70vh" alt="">
+                                                                <img src="{{ $data['menu_image'] }}" width="70vh" alt="">
                                                             </a>
                                                         </td>
                                                         <td class="cart-product-name-info">
@@ -66,7 +66,8 @@
                                                                 class="cart-grand-total-price">{{ number_format($data['order_quantity'] * $data['menu_price'], 2) }}</span>
                                                         </td>
                                                         <td style="font-size: 20px;">
-                                                            <button type="button" class="delete_cart_data btn btn-outline-danger">
+                                                            <button type="button"
+                                                                class="delete_cart_data btn btn-outline-danger">
                                                                 <i class="bi bi-trash"></i> Delete
                                                             </button>
                                                         </td>
@@ -88,29 +89,19 @@
 
                                     <div class="col-md-4 col-sm-12 ">
                                         <div class="cart-shopping-total">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <h6 class="cart-subtotal-name">Subtotal</h6>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <h6 class="cart-subtotal-price">
-                                                        Rs.
-                                                        <span
-                                                            class="cart-grand-price-viewajax">{{ number_format($total, 2) }}</span>
-                                                    </h6>
-                                                </div>
-                                            </div>
+
                                             <hr>
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <h6 class="cart-grand-name">Grand Total</h6>
+                                                    <h5 class="cart-grand-name">ราคารวม</h5>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <h6 class="cart-grand-price">
-                                                        Rs.
+                                                    <h5 class="cart-grand-price">
+
                                                         <span
-                                                            class="cart-grand-price-viewajax">{{ number_format($total, 2) }}</span>
-                                                    </h6>
+                                                            class="cart-grand-price-viewajax"> <b>{{ number_format($total, 2) }}  บาท</b>
+                                                        </span>
+                                                    </h5>
                                                 </div>
                                             </div>
                                             <hr>
@@ -118,16 +109,18 @@
                                                 <div class="col-md-12">
                                                     <div class="cart-checkout-btn text-center">
                                                         @if (Auth::user())
-                                                            <a href="{{ url('checkout') }}"
-                                                                class="btn btn-success btn-block checkout-btn">PROCCED TO
-                                                                CHECKOUT</a>
+                                                            <a href="{{ url('MyOrders') }}"
+                                                                class="btn btn-success btn-block checkout-btn">
+                                                            ยืนยันคำสั่งซื้อ
+                                                            </a>
                                                         @else
                                                             <a href="{{ url('login') }}"
-                                                                class="btn btn-success btn-block checkout-btn">PROCCED TO
-                                                                CHECKOUT</a>
+                                                                class="btn btn-success btn-block checkout-btn">
+                                                            เข้าสู่ระบบเพื่อสั่งซื้อ
+                                                            </a>
                                                             {{-- you add a pop modal for making a login --}}
                                                         @endif
-                                                        <h6 class="mt-3">Checkout with Fabcart</h6>
+                                                       
                                                     </div>
                                                 </div>
                                             </div>

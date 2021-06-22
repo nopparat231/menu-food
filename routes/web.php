@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AddToCartController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RestaurantController;
@@ -19,7 +21,7 @@ use App\Models\Menu;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Route::get('/', [LoginController::class ,'login']);
 Route::get('/', [MenuController::class ,'index']);
 
 Auth::routes();
@@ -31,7 +33,7 @@ Route::get('Select2', [RestaurantController::class, 'index'])->name('select2');
 
 Route::resource('menu', MenuController::class);
 
-Route::resource('order', OrderController::class);
+Route::get('MyOrders', [OrdersController::class, 'index']);
 
 Route::get('/Cart',[AddToCartController::class, 'index']);
 Route::post('add-to-cart', [AddToCartController::class, 'addtocart']);

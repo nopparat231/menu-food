@@ -10,6 +10,8 @@
 
     <title>{{ config('app.name', 'Menu-Food') }}</title>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+        crossorigin="anonymous"></script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/Cart.js') }}"></script>
@@ -28,14 +30,14 @@
     <!-- Styles Select2 -->
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
 
-    
-<!-- JavaScript AlertifyJS -->
-<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
-<!-- CSS -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
-<!-- Bootstrap theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+    <!-- JavaScript AlertifyJS -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
 
     <style>
         .select2-selection__rendered {
@@ -56,7 +58,8 @@
 
 <body>
     <div id="app">
-        <nav class="navbar  navbar-expand-md navbar-dark fixed-top navbar-light shadow-sm" style="background-color: #df87c9;">
+        <nav class="navbar  navbar-expand-md navbar-dark fixed-top navbar-light shadow-sm"
+            style="background-color: #df87c9;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Menu-Food') }}
@@ -103,12 +106,23 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+
+                                    <a class="dropdown-item" href="{{ route('logout') }}">
+                                        เพิ่มร้าน
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}">
+                                        จัดการรายการอาหาร
+                                    </a>
+                                    <a class="dropdown-item" href="{{ url('MyOrders') }}">
+                                        จัดการคำสั่งซื้อ
                                     </a>
 
+                                    <hr>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                                                 document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
@@ -159,7 +173,6 @@
             },
         });
     });
-
 </script>
 
 </html>

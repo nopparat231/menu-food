@@ -97,8 +97,8 @@ $(document).ready(function () {
 
         var data = {
             _token: $("input[name=_token]").val(),
-            quantity: quantity,
-            product_id: product_id,
+            order_quantity: quantity,
+            id: product_id,
         };
 
         $.ajax({

@@ -93,14 +93,14 @@ class AddToCartController extends Controller
 
     public function updatetocart(Request $request)
     {
-        $prod_id = $request->input('menu_id');
+        $prod_id = $request->input('id');
         $quantity = $request->input('order_quantity');
 
         if (Cookie::get('shopping_cart')) {
             $cookie_data = stripslashes(Cookie::get('shopping_cart'));
             $cart_data = json_decode($cookie_data, true);
 
-            $item_id_list = array_column($cart_data, 'menu_id');
+            $item_id_list = array_column($cart_data, 'id');
             $prod_id_is_there = $prod_id;
 
             if (in_array($prod_id_is_there, $item_id_list)) {
