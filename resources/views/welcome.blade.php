@@ -49,7 +49,7 @@
                                             <input type="hidden" name="menu_id" class="menu_id"
                                                 value="{{ $menu->menu_id }}">
                                                 <input type="hidden" name="menu_name" class="menu_name" value="{{$menu->menu_name}}">
-                                            <input type="text" class="qty-input" value="1">
+                                            <input type="hidden" class="qty-input" value="1">
                                             <button type="button" class="add-to-cart-btn btn btn-primary">สั่งอาหาร</button>
                                         </div>
                                     </div>

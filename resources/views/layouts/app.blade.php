@@ -10,8 +10,7 @@
 
     <title>{{ config('app.name', 'Menu-Food') }}</title>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/Cart.js') }}"></script>
