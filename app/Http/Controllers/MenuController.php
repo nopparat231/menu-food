@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\DB;
 
 class MenuController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
 
     public function index()
     {

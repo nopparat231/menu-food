@@ -34,6 +34,7 @@ Route::get('Select2', [RestaurantController::class, 'index'])->name('select2');
 Route::resource('menu', MenuController::class);
 
 Route::get('MyOrders', [OrdersController::class, 'index']);
+Route::post('Orders', [OrdersController::class, 'store']);
 
 Route::get('/Cart',[AddToCartController::class, 'index']);
 Route::post('add-to-cart', [AddToCartController::class, 'addtocart']);

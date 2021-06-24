@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Orders;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\DB;
 
 class OrdersController extends Controller
 {
@@ -38,9 +39,11 @@ class OrdersController extends Controller
   {
     Orders::updateOrCreate(
       [
-        'id' => $request->id
-      ],
-      [
+        'id' => $request->id,
+        'user_id' => $request->user_id,
+        'menu_id' => $request->menu_id,
+        'orders_detail' => $request->orders_detail,
+        'order_quantity' => $request->order_quantity,
         'orders_status' => $request->orders_status
       ]
     );
@@ -61,6 +64,9 @@ class OrdersController extends Controller
    */
   public function show($id)
   {
+    $findn = DB::table('menus')
+            ->select('*')->where('restaurant_name', 'like', '%' . $request . '%')->limit(1)->get();
+        return $findn;
     return view("orders.MyOrder");
   }
 
