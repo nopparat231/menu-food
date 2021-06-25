@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2021 at 06:04 PM
+-- Generation Time: Jun 25, 2021 at 07:02 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -103,14 +103,22 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `orders` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` varchar(255) NOT NULL,
-  `restaurant_id` varchar(255) NOT NULL,
   `menu_id` varchar(255) NOT NULL,
   `orders_detail` varchar(255) NOT NULL,
   `order_quantity` int(11) NOT NULL,
   `orders_status` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `menu_id`, `orders_detail`, `order_quantity`, `orders_status`, `created_at`, `updated_at`) VALUES
+(2, '5', '2', 'เผ็ดๆ', 1, '1', '2021-06-24 14:52:24', '2021-06-24 14:52:29'),
+(3, '5', '2', 'เผ็ดๆ', 1, '2', '2021-06-24 14:52:24', '2021-06-24 14:52:29'),
+(4, '5', '1', 'เผ็ดๆ', 1, '1', '2021-06-24 14:52:24', '2021-06-24 14:52:29');
 
 -- --------------------------------------------------------
 
@@ -123,6 +131,13 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('admin@admin.com', '$2y$10$6scGjrgVVdYuBK5uhA6vcOk6V2qNNkQa5FcesY/1W5OFFP3S4UsNe', '2021-06-22 08:19:33');
 
 -- --------------------------------------------------------
 
@@ -249,7 +264,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `restaurants`
