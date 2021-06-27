@@ -98,8 +98,8 @@
                                                 <div class="col-md-6">
                                                     <h5 class="cart-grand-price">
 
-                                                        <span
-                                                            class="cart-grand-price-viewajax"> <b>{{ number_format($total, 2) }}  บาท</b>
+                                                        <span class="cart-grand-price-viewajax">
+                                                            <b>{{ number_format($total, 2) }} บาท</b>
                                                         </span>
                                                     </h5>
                                                 </div>
@@ -109,18 +109,19 @@
                                                 <div class="col-md-12">
                                                     <div class="cart-checkout-btn text-center">
                                                         @if (Auth::user())
-                                                            <a href="{{ url('MyOrders') }}"
-                                                                class="btn btn-success btn-block checkout-btn">
-                                                            ยืนยันคำสั่งซื้อ
-                                                            </a>
+                                                            <button 
+                                                            id="add-to-orders-btn"
+                                                                class="btn btn-success btn-block checkout-btn add-to-orders-btn">
+                                                                ยืนยันคำสั่งซื้อ
+                                                            </button>
                                                         @else
                                                             <a href="{{ url('login') }}"
                                                                 class="btn btn-success btn-block checkout-btn">
-                                                            เข้าสู่ระบบเพื่อสั่งซื้อ
+                                                                เข้าสู่ระบบเพื่อสั่งซื้อ
                                                             </a>
                                                             {{-- you add a pop modal for making a login --}}
                                                         @endif
-                                                       
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -142,6 +143,8 @@
                         </div>
                     @endif
 
+                    <input type="hidden" id="shopping_cart" value="{{ Cookie::get('shopping_cart') }}">
+
                 </div>
             </div> <!-- /.row -->
         </div><!-- /.container -->
@@ -149,41 +152,34 @@
 
 @endsection
 
-<script>
-    
-$(document).ready(function () {
-    $(".add-to-cart-btn").click(function (e) {
-        e.preventDefault();
+<script type="text/javascript">
+$(document).ready(function() {
+        $(".add-to-orders-btn").click(function(e) {
+            e.preventDefault();
+alert('test');
+            // $.ajaxSetup({
+            //     headers: {
+            //         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            //     },
+            // });
 
-        $.ajaxSetup({
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            },
-        });
+            
+            //var order[] = document.getElementById("shopping_cart").value;
 
-        var menu_name = $(this)
-            .closest(".product_data")
-            .find(".menu_name")
-            .val();
-        var menu_id = $(this).closest(".product_data").find(".menu_id").val();
-        var order_quantity = $(this)
-            .closest(".product_data")
-            .find(".qty-input")
-            .val();
 
-        $.ajax({
-            url: "/add-to-cart",
-            method: "POST",
-            data: {
-                order_quantity: order_quantity,
-                menu_id: menu_id,
-            },
-            success: function (response) {
-                alertify.set("notifier", "position", "top-right");
-                alertify.success(response.status);
-                cartload();
-            },
+            // $.ajax({
+            //     // url: "/add-to-orders",
+            //     // method: "POST",
+            //     data: {
+            //         order: order[]
+            //     },
+            //     success: function(response) {
+            //         console.log(data);
+            //         // alertify.set("notifier", "position", "top-right");
+            //         // alertify.success(response.status);
+            //         //cartload();
+            //     },
+            // });
         });
     });
-});
 </script>

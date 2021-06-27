@@ -76,12 +76,11 @@ class OrdersController extends Controller
   {
     Orders::updateOrCreate(
       [
-        'id' => $request->id,
-        'user_id' => $request->user_id,
-        'menu_id' => $request->menu_id,
+        'user_id' => Auth::user()->id,
+        'menu_id' => $request->id,
         'orders_detail' => $request->orders_detail,
         'order_quantity' => $request->order_quantity,
-        'orders_status' => $request->orders_status
+        'orders_status' => '1'
       ]
     );
 
