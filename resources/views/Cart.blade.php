@@ -153,33 +153,5 @@
 @endsection
 
 <script type="text/javascript">
-$(document).ready(function() {
-        $(".add-to-orders-btn").click(function(e) {
-            e.preventDefault();
-alert('test');
-            // $.ajaxSetup({
-            //     headers: {
-            //         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            //     },
-            // });
 
-            
-            //var order[] = document.getElementById("shopping_cart").value;
-
-
-            // $.ajax({
-            //     // url: "/add-to-orders",
-            //     // method: "POST",
-            //     data: {
-            //         order: order[]
-            //     },
-            //     success: function(response) {
-            //         console.log(data);
-            //         // alertify.set("notifier", "position", "top-right");
-            //         // alertify.success(response.status);
-            //         //cartload();
-            //     },
-            // });
-        });
-    });
 </script>

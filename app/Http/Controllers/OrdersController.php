@@ -61,20 +61,10 @@ class OrdersController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  // public function create()
-  // {
-  //     //
-  // }
-
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
-  public function store(Request $request)
+  public function create(Request $request)
   {
-    Orders::updateOrCreate(
+     
+    Orders::create(
       [
         'user_id' => Auth::user()->id,
         'menu_id' => $request->id,
@@ -85,6 +75,29 @@ class OrdersController extends Controller
     );
 
     return redirect()->route('orders.MyOrder');
+  }
+
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @return \Illuminate\Http\Response
+   */
+  public function store(Request $request)
+  {
+    return "OKOK";
+
+    // Orders::create(
+    //   [
+    //     'user_id' => Auth::user()->id,
+    //     'menu_id' => $request->id,
+    //     'orders_detail' => $request->orders_detail,
+    //     'order_quantity' => $request->order_quantity,
+    //     'orders_status' => '1'
+    //   ]
+    // );
+
+    // return redirect()->route('orders.MyOrder');
   }
 
   /**

@@ -126,7 +126,7 @@ $(document).ready(function () {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
         });
-        
+
         var data = {
             _token: $("input[name=_token]").val(),
             id: product_id,
@@ -158,6 +158,43 @@ $(document).ready(function () {
                 window.location.reload();
                 alertify.set("notifier", "position", "top-right");
                 alertify.success(response.status);
+            },
+        });
+    });
+});
+
+$(document).ready(function () {
+    $(".add-to-orders-btn").click(function (e) {
+        e.preventDefault();
+
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
+        const order = document.getElementById("shopping_cart").value;
+        const myorder = JSON.parse(order);
+        //$myorder = array($order);
+
+        var orr = {
+            _token: $("input[name=_token]").val(),
+            user_id: 1,
+            menu_id: 1,
+            orders_detail: 1,
+            order_quantity: 1,
+            orders_status: 1
+        };
+
+        $.ajax({
+            // url: "/add-to-orders",
+            // method: "POST",
+            data: orr,
+            success: function (response) {
+                console.log(orr);
+                alertify.set("notifier", "position", "top-right");
+                alertify.success("สั่งอาหารแล้ว");
+                //cartload();
             },
         });
     });
