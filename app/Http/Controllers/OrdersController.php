@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Orders;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\DB;
 
@@ -63,18 +64,27 @@ class OrdersController extends Controller
    */
   public function create(Request $request)
   {
-     
-    Orders::create(
-      [
-        'user_id' => Auth::user()->id,
-        'menu_id' => $request->id,
-        'orders_detail' => $request->orders_detail,
-        'order_quantity' => $request->order_quantity,
-        'orders_status' => '1'
-      ]
-    );
+    if (Cookie::get('shopping_cart')) {
+      $cookie_data = stripslashes(Cookie::get('shopping_cart'));
+      $cart_data = json_decode($cookie_data, true);
 
-    return redirect()->route('orders.MyOrder');
+      Orders::create($cart_data->all());
+      return redirect()->route('orders.MyOrder')
+          ->with('success', 'orders created successfully.');
+  }
+
+
+    // Orders::create(
+    //   [
+    //     'user_id' => Auth::user()->id,
+    //     'menu_id' => $request->id,
+    //     'orders_detail' => $request->orders_detail,
+    //     'order_quantity' => $request->order_quantity,
+    //     'orders_status' => '1'
+    //   ]
+    // );
+
+    //return redirect()->route('orders.MyOrder');
   }
 
   /**

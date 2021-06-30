@@ -175,25 +175,30 @@ $(document).ready(function () {
 
         const order = document.getElementById("shopping_cart").value;
         const myorder = JSON.parse(order);
-        //$myorder = array($order);
 
-        var orr = {
-            _token: $("input[name=_token]").val(),
-            user_id: 1,
-            menu_id: 1,
-            orders_detail: 1,
-            order_quantity: 1,
-            orders_status: 1
-        };
+        const orders_details = "test detail";
+
+        let orders = {};
+        for (let i = 0; i < myorder.length; i++) {
+            orders = Object.assign({
+                [i]: {
+                    user_id: 5,
+                    menu_id: myorder[i].id,
+                    orders_detail: orders_details,
+                    order_quantity: myorder[i].order_quantity,
+                    orders_status: 1
+                },
+            },orders);
+        }
 
         $.ajax({
-            // url: "/add-to-orders",
-            // method: "POST",
-            data: orr,
+            url: "/add-to-orders",
+            method: "POST",
+            data: orders,
             success: function (response) {
-                console.log(orr);
+                //console.log(orders);
                 alertify.set("notifier", "position", "top-right");
-                alertify.success("สั่งอาหารแล้ว");
+                alertify.success(response.success);
                 //cartload();
             },
         });

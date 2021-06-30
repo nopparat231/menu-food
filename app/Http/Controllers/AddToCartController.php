@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
+use App\Models\Orders;
 
 class AddToCartController extends Controller
 {
@@ -144,5 +145,17 @@ class AddToCartController extends Controller
     {
         Cookie::queue(Cookie::forget('shopping_cart'));
         return response()->json(['status' => 'Your Cart is Cleared']);
+    }
+
+    
+    public function orders(Request $request)
+    {
+            // $cookie_data = stripslashes(Cookie::get('shopping_cart'));
+            // $cart_data = json_decode($cookie_data, true);
+      
+            Orders::create($request->all());
+            return redirect()->route('orders.MyOrder')
+                ->with('success', 'orders created successfully.');
+       
     }
 }
