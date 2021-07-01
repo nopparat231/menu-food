@@ -186,7 +186,8 @@ $(document).ready(function () {
                     menu_id: myorder[i].id,
                     orders_detail: orders_details,
                     order_quantity: myorder[i].order_quantity,
-                    orders_status: 1
+                    orders_status: 1,
+                    count_order: myorder.length
                 },
             },orders);
         }
@@ -196,9 +197,10 @@ $(document).ready(function () {
             method: "POST",
             data: orders,
             success: function (response) {
-                //console.log(orders);
+                console.log(orders);
                 alertify.set("notifier", "position", "top-right");
                 alertify.success(response.success);
+                location.href = 'MyOrders';
                 //cartload();
             },
         });

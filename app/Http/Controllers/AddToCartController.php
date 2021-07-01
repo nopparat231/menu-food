@@ -44,24 +44,21 @@ class AddToCartController extends Controller
                     return response()->json(['status' => '"' . $cart_data[$keys]["menu_name"] . '" Already Added to Cart', 'status2' => '2']);
                 }
             }
-        }
-        else
-        {
+        } else {
             $menu = DB::table('menus')
-            ->where('id', $menu_id )->first();
+                ->where('id', $menu_id)->first();
             $menu_name = $menu->menu_name;
             $menu_image = $menu->menu_img;
             $menu_price = $menu->menu_price;
 
-            if($menu)
-            {
+            if ($menu) {
                 $item_array = array(
                     'id' => $menu_id,
                     'menu_name' => $menu_name,
                     'order_quantity' => $order_quantity,
                     'menu_image' => $menu_image,
                     'menu_price' => $menu_price
-                    
+
                 );
                 $cart_data[] = $item_array;
 
@@ -69,7 +66,7 @@ class AddToCartController extends Controller
                 $minutes = 60;
 
                 Cookie::queue(Cookie::make('shopping_cart', $item_data, $minutes));
-                return response()->json(['status'=>'"'.$menu_name.'" Added to Cart']);
+                return response()->json(['status' => '"' . $menu_name . '" Added to Cart']);
             }
         }
     }
@@ -147,15 +144,26 @@ class AddToCartController extends Controller
         return response()->json(['status' => 'Your Cart is Cleared']);
     }
 
-    
+
     public function orders(Request $request)
     {
-            // $cookie_data = stripslashes(Cookie::get('shopping_cart'));
-            // $cart_data = json_decode($cookie_data, true);
-      
-            Orders::create($request->all());
-            return redirect()->route('orders.MyOrder')
-                ->with('success', 'orders created successfully.');
-       
+
+        for ($i = 0; $i < $request[0]["count_order"]; $i++) {
+
+            $orders[] = [
+                'user_id' => $request[$i]["user_id"],
+                'menu_id' => $request[$i]["menu_id"],
+                'orders_detail' => $request[$i]["orders_detail"],
+                'order_quantity' => $request[$i]["order_quantity"],
+                'orders_status' => 1
+            ];
+        }
+        Orders::insert($orders);
+        Cookie::queue(Cookie::forget('shopping_cart'));
+        return response()->json(['success' => 'Orders Created Successfully.']);
+
+        // return redirect('MyOrders')->route('MyOrders')
+        //     ->with('success', 'orders created successfully.');
+
     }
 }
