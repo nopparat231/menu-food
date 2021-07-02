@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2021 at 07:02 PM
+-- Generation Time: Jul 02, 2021 at 03:56 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -102,11 +102,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `orders` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `user_id` varchar(255) NOT NULL,
-  `menu_id` varchar(255) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `menu_id` int(11) NOT NULL,
   `orders_detail` varchar(255) NOT NULL,
   `order_quantity` int(11) NOT NULL,
-  `orders_status` varchar(255) NOT NULL,
+  `orders_status` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -116,9 +116,10 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `menu_id`, `orders_detail`, `order_quantity`, `orders_status`, `created_at`, `updated_at`) VALUES
-(2, '5', '2', 'เผ็ดๆ', 1, '1', '2021-06-24 14:52:24', '2021-06-24 14:52:29'),
-(3, '5', '2', 'เผ็ดๆ', 1, '2', '2021-06-24 14:52:24', '2021-06-24 14:52:29'),
-(4, '5', '1', 'เผ็ดๆ', 1, '1', '2021-06-24 14:52:24', '2021-06-24 14:52:29');
+(65, 5, 2, 'test detail', 2, 1, '2021-07-01 17:13:56', '2021-07-01 17:13:56'),
+(66, 5, 3, 'test detail', 1, 1, '2021-07-01 17:13:56', '2021-07-01 17:13:56'),
+(67, 5, 2, 'test detail', 1, 1, '2021-07-01 17:15:54', '2021-07-01 17:15:54'),
+(68, 5, 1, 'test detail', 2, 1, '2021-07-01 17:15:54', '2021-07-01 17:15:54');
 
 -- --------------------------------------------------------
 
@@ -264,7 +265,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `restaurants`

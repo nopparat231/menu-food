@@ -167,12 +167,6 @@ $(document).ready(function () {
     $(".add-to-orders-btn").click(function (e) {
         e.preventDefault();
 
-        $.ajaxSetup({
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-            },
-        });
-
         const order = document.getElementById("shopping_cart").value;
         const myorder = JSON.parse(order);
 
