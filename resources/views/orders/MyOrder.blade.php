@@ -33,16 +33,43 @@
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
-                                                <h5 class="card-title">{{ $menu->menu_name }}</h5>
-                                                <p class="card-text"><small class="text-muted">จำนวนคิวรอ <b
-                                                            id="orders_status" data-id="1">1</b> คิว</small></p>
-                                                <input type="hidden" name="menu_id" class="menu_id"
-                                                    value="{{ $menu->menu_id }}">
-                                                <input type="hidden" name="menu_name" class="menu_name"
-                                                    value="{{ $menu->menu_name }}">
-                                                <input type="hidden" class="qty-input" value="1">
-                                                <button type="button" disabled
-                                                    class="add-to-cart-btn btn btn-primary">รอทำอาหาร</button>
+                                                <h4 class="card-title">{{ $menu->menu_name }}</h4>
+                                                <p class="card-text">
+                                                    <b>จำนวณ {{ $menu->order_quantity }}</ิ>
+                                                <h5 class="text-muted">
+                                                    <b>
+                                                        @if ($menu->orders_status == 2)
+                                                            <p style="color: hotpink"> รับออเดอร์แล้ว กำลังทำอาหาร</p>
+                                                        @elseif ($menu->orders_status == 3)
+                                                            <p style="color: green"> ทำอาหารเสร็จแล้ว</p>
+
+                                                        @elseif ($menu->orders_status == 0)
+                                                            <p style="color: red"> ยกเลิกออเดอร์</p>
+                                                        @else
+                                                            <p style="color: rgb(164, 205, 238)"> รอรับออกเดอร์ ... </p>
+                                                        @endif
+
+
+                                                    </b>
+                                                    </p>
+                                                    <input type="hidden" name="menu_id" class="menu_id"
+                                                        value="{{ $menu->menu_id }}">
+                                                    <input type="hidden" name="menu_name" class="menu_name"
+                                                        value="{{ $menu->menu_name }}">
+                                                    <input type="hidden" name="orders_id" class="orders_id"
+                                                        value="{{ $menu->orders_id }}">
+                                                    <input type="hidden" class="qty-input" value="1">
+                                                    {{-- <button type="button" disabled
+                                                    class="add-to-cart-btn btn btn-primary">รอทำอาหาร
+                                                </button> --}}
+                                                    <button type="button" class="con-order-btn btn btn-lite"
+                                                        style="background-color: hotpink;color: white">รับออเดอร์
+                                                    </button>
+                                                    <button type="button" class="done-order-btn btn btn-lite"
+                                                        style="background-color: green;color: white">ทำอาหารเสร็จแล้ว
+                                                    </button>
+                                                    <button type="button" class="can-order-btn btn btn-danger">ยกเลิกออเดอร์
+                                                    </button>
                                             </div>
                                         </div>
                                     </div>

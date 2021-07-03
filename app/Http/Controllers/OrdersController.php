@@ -20,7 +20,7 @@ class OrdersController extends Controller
 
   public function __construct()
   {
-      $this->middleware('auth');
+    $this->middleware('auth');
   }
 
 
@@ -37,6 +37,7 @@ class OrdersController extends Controller
         'menus.menu_img',
         'menus.menu_detail',
         'restaurant_name',
+        'orders.id as orders_id',
         'orders.user_id',
         'orders.menu_id',
         'orders.orders_detail',
@@ -45,7 +46,7 @@ class OrdersController extends Controller
         'orders.created_at'
       )
       ->where('orders.user_id', '=', Auth::user()->id)
-      ->where('orders.orders_status', '!=', 2)
+      ->where('orders.orders_status', '!=', 4)
       ->orderBy('menus.restaurant_id', 'DESC')
       ->get();
 
@@ -62,29 +63,27 @@ class OrdersController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
+
   public function create(Request $request)
   {
-    if (Cookie::get('shopping_cart')) {
-      $cookie_data = stripslashes(Cookie::get('shopping_cart'));
-      $cart_data = json_decode($cookie_data, true);
 
-      Orders::create($cart_data->all());
-      return redirect()->route('orders.MyOrder')
-          ->with('success', 'orders created successfully.');
-  }
+    for ($i = 0; $i < $request[0]["count_order"]; $i++) {
 
+      $orders[] = [
+        'user_id' => $request[$i]["user_id"],
+        'menu_id' => $request[$i]["menu_id"],
+        'orders_detail' => $request[$i]["orders_detail"],
+        'order_quantity' => $request[$i]["order_quantity"],
+        'orders_status' => 1
+      ];
+    }
+    Orders::insert($orders);
+    Cookie::queue(Cookie::forget('shopping_cart'));
+    return response()->json(['success' => 'Orders Created Successfully.']);
 
-    // Orders::create(
-    //   [
-    //     'user_id' => Auth::user()->id,
-    //     'menu_id' => $request->id,
-    //     'orders_detail' => $request->orders_detail,
-    //     'order_quantity' => $request->order_quantity,
-    //     'orders_status' => '1'
-    //   ]
-    // );
+    // return redirect('MyOrders')->route('MyOrders')
+    //     ->with('success', 'orders created successfully.');
 
-    //return redirect()->route('orders.MyOrder');
   }
 
   /**
@@ -96,18 +95,6 @@ class OrdersController extends Controller
   public function store(Request $request)
   {
     return "OKOK";
-
-    // Orders::create(
-    //   [
-    //     'user_id' => Auth::user()->id,
-    //     'menu_id' => $request->id,
-    //     'orders_detail' => $request->orders_detail,
-    //     'order_quantity' => $request->order_quantity,
-    //     'orders_status' => '1'
-    //   ]
-    // );
-
-    // return redirect()->route('orders.MyOrder');
   }
 
   /**
@@ -121,7 +108,7 @@ class OrdersController extends Controller
     $findn = DB::table('menus')
       ->select('*')->where('restaurant_name', 'like', '%' . $id . '%')->limit(1)->get();
 
-    return view("orders.MyOrder",$findn);
+    return view("orders.MyOrder", $findn);
   }
 
   /**
@@ -144,7 +131,13 @@ class OrdersController extends Controller
    */
   public function update(Request $request, $id)
   {
-    //
+    $orders_status = $request->input('orders_status');
+
+    DB::table('orders')
+      ->where('id', $id)
+      ->update(['orders_status' => $orders_status]);
+
+    return response()->json(['status' => 'Orders Update Successfully.']);
   }
 
   /**

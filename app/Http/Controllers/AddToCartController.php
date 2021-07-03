@@ -145,25 +145,4 @@ class AddToCartController extends Controller
     }
 
 
-    public function orders(Request $request)
-    {
-
-        for ($i = 0; $i < $request[0]["count_order"]; $i++) {
-
-            $orders[] = [
-                'user_id' => $request[$i]["user_id"],
-                'menu_id' => $request[$i]["menu_id"],
-                'orders_detail' => $request[$i]["orders_detail"],
-                'order_quantity' => $request[$i]["order_quantity"],
-                'orders_status' => 1
-            ];
-        }
-        Orders::insert($orders);
-        Cookie::queue(Cookie::forget('shopping_cart'));
-        return response()->json(['success' => 'Orders Created Successfully.']);
-
-        // return redirect('MyOrders')->route('MyOrders')
-        //     ->with('success', 'orders created successfully.');
-
-    }
 }

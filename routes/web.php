@@ -34,13 +34,13 @@ Route::get('Select2', [RestaurantController::class, 'index'])->name('select2');
 Route::resource('menu', MenuController::class);
 
 Route::get('MyOrders', [OrdersController::class, 'index']);
-//Route::post('/add-to-orders', [OrdersController::class, 'create']);
+Route::post('/add-to-orders', [OrdersController::class, 'create']);
+Route::post('/update-orders/{id}', [OrdersController::class, 'update']);
 
 Route::get('/Cart',[AddToCartController::class, 'index']);
 
 Route::post('add-to-cart', [AddToCartController::class, 'addtocart']);
 Route::post('update-to-cart',[AddToCartController::class, 'updatetocart']);
-Route::post('add-to-orders', [AddToCartController::class, 'orders']);
 
 Route::get('/load-cart-data', [AddToCartController::class, 'cartloadbyajax']);
 Route::delete('delete-from-cart',[AddToCartController::class, 'deletefromcart']);
