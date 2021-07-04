@@ -15,6 +15,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/Cart.js') }}"></script>
     <script src="{{ asset('js/Order.js') }}"></script>
+    <script src="{{ asset('js/findd.js') }}"></script>
     <!-- Scripts Select2 -->
     <script src="{{ asset('js/select2.min.js') }}"></script>
 

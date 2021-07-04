@@ -34,7 +34,14 @@ class MenuController extends Controller
             ->groupBy('restaurant_id')
             ->get();
 
-        return view('welcome')->with(['menus' => $menus])->with(['gmenus' => $gmenus]);
+
+        $torders = DB::table('orders')
+            ->select('menu_id', DB::raw('count(*) as torder'))
+            ->where('orders_status', "=", 2)
+            ->groupBy('menu_id')
+            ->get();
+
+        return view('welcome')->with(['menus' => $menus])->with(['gmenus' => $gmenus])->with(['torders' => $torders]);
     }
 
     public function findn(Request $request)
@@ -99,5 +106,38 @@ class MenuController extends Controller
         $menu->delete();
         return redirect()->route('menu.index')
             ->with('success', 'Menu deleted successfully');
+    }
+
+    public function findd(Request $request, $id)
+    {
+
+        $menus =  DB::table('menus')
+            ->join('restaurants', 'restaurants.id', '=', 'menus.restaurant_id')
+            ->select(
+                'menus.id as menu_id',
+                'menus.user_id',
+                'menus.restaurant_id',
+                'menus.menu_name',
+                'menus.menu_img',
+                'menus.menu_detail',
+                'restaurant_name'
+            )
+            ->where('restaurants.id', $id)
+            ->orderBy('menus.restaurant_id', 'DESC')
+            ->get();
+
+        $gmenus =  DB::table('menus')
+            ->select('restaurant_id', DB::raw('count(*) as total'))
+            ->where('restaurant_id', $id)
+            ->groupBy('restaurant_id')
+            ->get();
+
+        $torders = DB::table('orders')
+            ->select('menu_id', DB::raw('count(*) as torder'))
+            ->where('orders_status', "=", 2)
+            ->groupBy('menu_id')
+            ->get();
+
+        return view('welcome')->with(['menus' => $menus])->with(['gmenus' => $gmenus])->with(['torders' => $torders]);
     }
 }

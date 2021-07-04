@@ -32,6 +32,7 @@ Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home
 Route::get('Select2', [RestaurantController::class, 'index'])->name('select2');
 
 Route::resource('menu', MenuController::class);
+Route::get('/restaurant/{id}', [MenuController::class, 'findd']);
 
 Route::get('MyOrders', [OrdersController::class, 'index']);
 Route::post('/add-to-orders', [OrdersController::class, 'create']);

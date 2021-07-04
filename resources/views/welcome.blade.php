@@ -43,12 +43,23 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{ $menu->menu_name }}</h5>
-                                            <p class="card-text"><small class="text-muted">จำนวนคิวรอ <b id="orders_status"
-                                                        data-id="1">1</b> คิว</small></p>
+                                            <h4 class="card-title">{{ $menu->menu_name . $menu->menu_id }}</h4>
+                                            <p class="card-text">
+                                                <small class="text-muted">
+                                               
+                                                        @foreach ($torders as $item)
+                                                            @if ($menu->menu_id == $item->menu_id)
+                                                                 จำนวนคิวรอ <b id="orders_status" > {{ $item->torder }} </b> คิว
+                                                            @endif
+                                                        @endforeach
+<br>
+
+                                                   
+                                                </small></p>
                                             <input type="hidden" name="menu_id" class="menu_id"
                                                 value="{{ $menu->menu_id }}">
-                                                <input type="hidden" name="menu_name" class="menu_name" value="{{$menu->menu_name}}">
+                                            <input type="hidden" name="menu_name" class="menu_name"
+                                                value="{{ $menu->menu_name }}">
                                             <input type="hidden" class="qty-input" value="1">
                                             <button type="button" class="add-to-cart-btn btn btn-primary">สั่งอาหาร</button>
                                         </div>
