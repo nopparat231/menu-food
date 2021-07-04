@@ -46,16 +46,17 @@
                                             <h4 class="card-title">{{ $menu->menu_name . $menu->menu_id }}</h4>
                                             <p class="card-text">
                                                 <small class="text-muted">
-                                               
-                                                        @foreach ($torders as $item)
-                                                            @if ($menu->menu_id == $item->menu_id)
-                                                                 จำนวนคิวรอ <b id="orders_status" > {{ $item->torder }} </b> คิว
-                                                            @endif
-                                                        @endforeach
-<br>
 
-                                                   
-                                                </small></p>
+                                                    @foreach ($torders as $item)
+                                                        @if ($menu->menu_id == $item->menu_id)
+                                                            จำนวนคิวรอ <b id="orders_status"> {{ $item->torder }} </b> คิว
+                                                        @endif
+                                                    @endforeach
+                                                    <br>
+
+
+                                                </small>
+                                            </p>
                                             <input type="hidden" name="menu_id" class="menu_id"
                                                 value="{{ $menu->menu_id }}">
                                             <input type="hidden" name="menu_name" class="menu_name"
