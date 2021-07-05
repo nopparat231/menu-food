@@ -8,9 +8,9 @@
 
                     <div class="card-body">
 
-                        <h5 class="card-title">เพิ่มเมนู</h5>
+                        <h5 class="card-title">เพิ่มร้าน</h5>
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">ชื่อเมนู</label>
+                            <label for="exampleFormControlInput1" class="form-label">ชื่อร้าน</label>
                             <input type="text" class="form-control" id="exampleFormControlInput1">
                         </div>
                         <div class="mb-3">

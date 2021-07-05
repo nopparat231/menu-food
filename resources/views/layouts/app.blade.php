@@ -108,11 +108,11 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                    <a class="dropdown-item" href="{{ route('logout') }}">
+                                    <a class="dropdown-item" href="{{ url('addRestaurant') }}">
                                         เพิ่มร้าน
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}">
-                                        จัดการรายการอาหาร
+                                    <a class="dropdown-item" href="{{ url('menu/create') }}">
+                                        จัดการเมนูอาหา
                                     </a>
                                     <a class="dropdown-item" href="{{ url('MyOrders') }}">
                                         จัดการคำสั่งซื้อ

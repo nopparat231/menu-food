@@ -30,6 +30,7 @@ Route::get('home', [HomeController::class, 'index'])->name('home');
 Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware(('is_admin'));
 
 Route::get('Select2', [RestaurantController::class, 'index'])->name('select2');
+Route::get('addRestaurant', [RestaurantController::class, 'create']);
 
 Route::resource('menu', MenuController::class);
 Route::get('/restaurant/{id}', [MenuController::class, 'findd']);
