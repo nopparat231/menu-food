@@ -8,18 +8,29 @@
 
                     <div class="card-body">
 
-                        <h5 class="card-title">เพิ่มเมนู</h5>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">ชื่อเมนู</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">รายละเอียด</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                        <div class="col-auto">
-                            <button type="submit" class="btn btn-primary mb-3">Add</button>
-                        </div>
+                        <h5 class="card-title">ร้าน {{ $res[0]->restaurant_name }}</h5>
+                        <form action="{{ url('menu') }}" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <br>
+                                <label for="exampleInputPassword1">ชื่อเมนู</label>
+                                <input type="text" name="menu_name" class="form-control">
+                                <br>
+                                <label for="exampleInputPassword1">ราคา</label>
+                                <input type="number" name="menu_price" class="form-control">
+
+                                <br>
+                                <label for="exampleInputPassword1">รูปอาหาร  URL</label>
+                                <input type="text" name="menu_img" class="form-control">
+                                
+                                <input type="hidden" name="menu_status" value="0">
+                                <input type="hidden" name="menu_detail" value="test">
+                                <input type="hidden" name="restaurant_id" value="{{ $res[0]->id }}">
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
 
                     </div>
 

@@ -14,6 +14,8 @@ class Menu extends Model
         'restaurant_id',
         'menu_name',
         'menu_img',
+        'menu_price',
         'menu_detail',
+        'menu_status'
     ];
 }

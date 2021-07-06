@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -53,7 +53,9 @@ class MenuController extends Controller
 
     public function create()
     {
-        return view('menu.create');
+        $res = DB::table('restaurants')
+            ->select('*')->where('user_id', '=', Auth::user()->id )->limit(1)->get();
+        return view('menu.create')->with(['res' => $res]);
     }
 
 

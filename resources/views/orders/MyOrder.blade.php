@@ -19,7 +19,7 @@
                         @endif
                     @endforeach
 
-                    <hr style="margin-top: 0px">
+                    {{-- <hr style="margin-top: 0px"> --}}
 
                     @foreach ($menus as $menu)
 

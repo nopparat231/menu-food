@@ -9,18 +9,19 @@
                     <div class="card-body">
 
                         <h5 class="card-title">เพิ่มร้าน</h5>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">ชื่อร้าน</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">รายละเอียด</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                        <div class="col-auto">
-                            <button type="submit" class="btn btn-primary mb-3">Add</button>
-                        </div>
 
+                        <form action="" method="POST">
+                            @csrf
+                            @method('POST')
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">ชื่อร้าน</label>
+                              <input type="text" name="restaurant_name" class="form-control" id="exampleInputPassword1">
+                              <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                            </div>
+                           
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </form>
+                        
                     </div>
 
                 </div>

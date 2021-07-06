@@ -1,4 +1,7 @@
-setTimeout("location.reload(true);", 15000);
+var pathNow = window.location.pathname;
+if (pathNow == "/" || pathNow == "/MyOrders") {
+    setTimeout("location.reload(true);", 15000);
+}
 
 $(document).ready(function () {
     $(".con-order-btn").click(function (e) {
@@ -13,7 +16,7 @@ $(document).ready(function () {
         var id = $(this).closest(".product_data").find(".orders_id").val();
 
         $.ajax({
-            url: "/update-orders/"+id,
+            url: "/update-orders/" + id,
             method: "POST",
             data: {
                 _token: $("input[name=_token]").val(),
@@ -42,7 +45,7 @@ $(document).ready(function () {
         var id = $(this).closest(".product_data").find(".orders_id").val();
 
         $.ajax({
-            url: "/update-orders/"+id,
+            url: "/update-orders/" + id,
             method: "POST",
             data: {
                 _token: $("input[name=_token]").val(),
@@ -58,7 +61,6 @@ $(document).ready(function () {
     });
 });
 
-
 $(document).ready(function () {
     $(".can-order-btn").click(function (e) {
         e.preventDefault();
@@ -72,7 +74,7 @@ $(document).ready(function () {
         var id = $(this).closest(".product_data").find(".orders_id").val();
 
         $.ajax({
-            url: "/update-orders/"+id,
+            url: "/update-orders/" + id,
             method: "POST",
             data: {
                 _token: $("input[name=_token]").val(),
@@ -80,7 +82,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 alertify.set("notifier", "position", "top-right");
-                alertify.success('ยกเลิกออเดอร์แล้ว');
+                alertify.success("ยกเลิกออเดอร์แล้ว");
                 location.reload();
                 //cartload();
             },

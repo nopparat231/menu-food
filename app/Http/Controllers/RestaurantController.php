@@ -55,9 +55,12 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        //$restaurant_name = $request->input('restaurant_name');
 
+        $restaurant = Restaurant::create($request->all());
+
+        return redirect('/')->with('completed', 'Restaurant created!');
+    }
     /**
      * Display the specified resource.
      *

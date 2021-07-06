@@ -31,6 +31,7 @@ Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home
 
 Route::get('Select2', [RestaurantController::class, 'index'])->name('select2');
 Route::get('addRestaurant', [RestaurantController::class, 'create']);
+Route::post('addRestaurant', [RestaurantController::class, 'store']);
 
 Route::resource('menu', MenuController::class);
 Route::get('/restaurant/{id}', [MenuController::class, 'findd']);
