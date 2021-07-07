@@ -170,13 +170,14 @@ $(document).ready(function () {
         const order = document.getElementById("shopping_cart").value;
         const myorder = JSON.parse(order);
 
+        const user_id = document.getElementById("user_id").value;
         const orders_details = "test detail";
 
         let orders = {};
         for (let i = 0; i < myorder.length; i++) {
             orders = Object.assign({
                 [i]: {
-                    user_id: 5,
+                    user_id: user_id,
                     menu_id: myorder[i].id,
                     orders_detail: orders_details,
                     order_quantity: myorder[i].order_quantity,

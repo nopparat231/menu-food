@@ -89,3 +89,33 @@ $(document).ready(function () {
         });
     });
 });
+
+
+$(document).ready(function () {
+    $(".del-order-btn").click(function (e) {
+        e.preventDefault();
+
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
+        var id = $(this).closest(".product_data").find(".orders_id").val();
+
+        $.ajax({
+            url: "/update-orders/" + id,
+            method: "POST",
+            data: {
+                _token: $("input[name=_token]").val(),
+                orders_status: 4,
+            },
+            success: function (response) {
+                alertify.set("notifier", "position", "top-right");
+                alertify.success("ลบเลิกออเดอร์แล้ว");
+                location.reload();
+                //cartload();
+            },
+        });
+    });
+});

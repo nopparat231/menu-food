@@ -35,17 +35,19 @@ class OrdersController extends Controller
         'menus.restaurant_id',
         'menus.menu_name',
         'menus.menu_img',
+        'menus.menu_price as price',
         'menus.menu_detail',
         'restaurant_name',
+        'restaurants.user_id as res_uid',
         'orders.id as orders_id',
-        'orders.user_id',
+        'orders.user_id as or_uid',
         'orders.menu_id',
         'orders.orders_detail',
         'orders.order_quantity',
         'orders.orders_status',
         'orders.created_at'
       )
-      ->where('orders.user_id', '=', Auth::user()->id)
+      // ->where('orders.user_id', '=', Auth::user()->id)
       ->where('orders.orders_status', '!=', 4)
       ->orderBy('menus.restaurant_id', 'DESC')
       ->get();

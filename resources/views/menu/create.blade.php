@@ -20,9 +20,9 @@
                                 <input type="number" name="menu_price" class="form-control">
 
                                 <br>
-                                <label for="exampleInputPassword1">รูปอาหาร  URL</label>
+                                <label for="exampleInputPassword1">รูปอาหาร URL</label>
                                 <input type="text" name="menu_img" class="form-control">
-                                
+
                                 <input type="hidden" name="menu_status" value="0">
                                 <input type="hidden" name="menu_detail" value="test">
                                 <input type="hidden" name="restaurant_id" value="{{ $res[0]->id }}">

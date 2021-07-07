@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 06, 2021 at 05:10 PM
+-- Generation Time: Jul 07, 2021 at 05:06 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -116,19 +116,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `menu_id`, `orders_detail`, `order_quantity`, `orders_status`, `created_at`, `updated_at`) VALUES
-(73, 5, 8, 'test detail', 2, 3, '2021-07-03 14:03:47', '2021-07-03 07:52:18'),
-(74, 5, 2, 'test detail', 1, 3, '2021-07-03 14:03:47', '2021-07-03 14:03:47'),
-(75, 5, 8, 'test detail', 2, 3, '2021-07-03 15:16:22', '2021-07-03 15:16:22'),
-(76, 5, 2, 'test detail', 1, 2, '2021-07-03 15:16:22', '2021-07-03 15:16:22'),
-(77, 5, 1, 'test detail', 1, 2, '2021-07-03 15:16:22', '2021-07-03 15:16:22'),
-(78, 5, 3, 'test detail', 1, 2, '2021-07-03 15:16:22', '2021-07-03 15:16:22'),
-(79, 5, 7, 'test detail', 1, 2, '2021-07-03 15:16:22', '2021-07-03 15:16:22'),
-(80, 5, 6, 'test detail', 1, 3, '2021-07-03 15:33:42', '2021-07-03 15:33:42'),
-(81, 5, 4, 'test detail', 2, 1, '2021-07-03 15:33:42', '2021-07-03 15:33:42'),
-(82, 5, 3, 'test detail', 1, 0, '2021-07-03 15:33:42', '2021-07-03 15:33:42'),
-(83, 5, 8, 'test detail', 1, 2, '2021-07-03 15:39:37', '2021-07-03 15:39:37'),
-(84, 5, 8, 'test detail', 2, 1, '2021-07-04 14:18:25', '2021-07-04 14:18:25'),
-(85, 5, 2, 'test detail', 1, 1, '2021-07-04 14:18:25', '2021-07-04 14:18:25');
+(91, 7, 1, 'test detail', 2, 2, '2021-07-07 14:16:35', '2021-07-07 14:16:35'),
+(92, 7, 3, 'test detail', 3, 4, '2021-07-07 14:16:35', '2021-07-07 14:16:35'),
+(93, 7, 6, 'test detail', 4, 1, '2021-07-07 14:16:35', '2021-07-07 14:16:35');
 
 -- --------------------------------------------------------
 
@@ -198,7 +188,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `is_admin`, `pa
 (3, 'Admin', 'admin@admin.com', NULL, 1, '$2y$10$8CUBIfU3OfZXPJn6sa91luN/PGtHc6nracf2EGJsBcJzJ7iHpTuoC', NULL, '2021-04-27 06:59:47', '2021-04-27 06:59:47'),
 (4, 'User', 'user@user.com', NULL, 0, '$2y$10$EI6691bzgLrsGg2Dit1TVe53i3/sfblM.CqZk31wr7z1xLeLHxV6a', NULL, '2021-04-27 06:59:47', '2021-04-27 06:59:47'),
 (5, 'test1', 'test1@test1.com', NULL, 0, '$2y$10$/WnHRQyXSeMRGLzPUfijteQvsO8Wjqr4Ay.LQjq0QIVKT1P1CrVNO', NULL, '2021-04-27 07:19:26', '2021-04-27 07:19:26'),
-(6, 'test11', 'test11@mail.com', NULL, 0, '$2y$10$JB6/zfAYE2g2vjn09L6j7utd2hqmwUeHmrBstr81ahmlSaHBGCeRa', NULL, '2021-07-06 06:07:39', '2021-07-06 06:07:39');
+(6, 'test11', 'test11@mail.com', NULL, 0, '$2y$10$JB6/zfAYE2g2vjn09L6j7utd2hqmwUeHmrBstr81ahmlSaHBGCeRa', NULL, '2021-07-06 06:07:39', '2021-07-06 06:07:39'),
+(7, 'test12', 'test12@mail.com', NULL, 0, '$2y$10$HPmmbwNczWoCIylwleA2Je8ByhmFq/t5dANFF7UkBN3QPqG/5obva', NULL, '2021-07-07 06:47:18', '2021-07-07 06:47:18');
 
 --
 -- Indexes for dumped tables
@@ -274,7 +265,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `restaurants`
@@ -286,7 +277,7 @@ ALTER TABLE `restaurants`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
