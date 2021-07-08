@@ -58,7 +58,7 @@
                                                 </small>
                                             </p>
                                             <input type="hidden" name="user_id" id="user_id" class="user_id"
-                                                value="{{ Auth::user()->id }}">
+                                                value="{{ Auth::check() ? Auth::user()->id : null }}">
                                             <input type="hidden" name="menu_id" class="menu_id"
                                                 value="{{ $menu->menu_id }}">
                                             <input type="hidden" name="menu_name" class="menu_name"

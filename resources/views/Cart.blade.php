@@ -108,7 +108,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="cart-checkout-btn text-center">
-                                                        @if (Auth::user())
+                                                        @if (Auth::check())
                                                             <button id="add-to-orders-btn"
                                                                 class="btn btn-success btn-block checkout-btn add-to-orders-btn">
                                                                 ยืนยันคำสั่งซื้อ
@@ -143,7 +143,7 @@
                     @endif
 
                     <input type="hidden" id="shopping_cart" value="{{ Cookie::get('shopping_cart') }}">
-                    <input type="hidden" name="user_id" id="user_id" class="user_id" value="{{ Auth::user()->id }}">
+                    <input type="hidden" name="user_id" id="user_id" class="user_id" value="{{ Auth::check() ? Auth::user()->id : null }}">
 
                 </div>
             </div> <!-- /.row -->
