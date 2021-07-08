@@ -45,6 +45,17 @@
                                         <div class="card-body">
                                             <h4 class="card-title">{{ $menu->menu_name . $menu->menu_id }}</h4>
                                             <p class="card-text">
+
+                                                <div class="row">
+                                                    
+                                                    <div class="col-md-6">
+                                                        <h5 class="cart-grand-price">                                                          <span class="cart-grand-price-viewajax">
+                                                                <b>ราคา {{ $menu->menu_price }} บาท</b>
+                                                            </span>
+                                                        </h5>
+                                                    </div>
+                                                </div>
+
                                                 <small class="text-muted">
 
                                                     @foreach ($torders as $item)

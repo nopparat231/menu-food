@@ -39,7 +39,7 @@
                                                         </td>
                                                         <td class="cart-product-name-info">
                                                             <h4 class='cart-product-description'>
-                                                                {{ $data['menu_name'] }}
+                                                                {{ $data['menu_name'].$data['id'] }}
                                                             </h4>
                                                         </td>
                                                         <td class="cart-product-sub-total">
