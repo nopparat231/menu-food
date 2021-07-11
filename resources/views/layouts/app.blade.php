@@ -118,6 +118,10 @@
                                         จัดการคำสั่งซื้อ
                                     </a>
 
+                                    <a class="dropdown-item" target="_blank" href="{{ url('https://chart.googleapis.com/chart?cht=qr&chl='.url("restaurant/").'&chs=280x280&choe=UTF-8') }}">
+                                        โหลด QR Code ของร้าน
+                                    </a>
+
                                     <hr>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();

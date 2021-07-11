@@ -23,7 +23,7 @@ class MenuController extends Controller
                 'menus.restaurant_id',
                 'menus.menu_name',
                 'menus.menu_img',
-                'menu_price',
+                'menus.menu_price',
                 'menus.menu_detail',
                 'restaurant_name'
             )
@@ -122,6 +122,7 @@ class MenuController extends Controller
                 'menus.restaurant_id',
                 'menus.menu_name',
                 'menus.menu_img',
+                'menus.menu_price',
                 'menus.menu_detail',
                 'restaurant_name'
             )

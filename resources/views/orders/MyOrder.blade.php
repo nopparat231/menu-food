@@ -42,26 +42,35 @@
                                                 <div class="card-body">
                                                     <h4 class="card-title">{{ $menu->menu_name . $menu->menu_id }}</h4>
                                                     <p class="card-text">
-                                                        <b>จำนวณ {{ $menu->order_quantity }}</ิ>
-                                                            <h5 class="text-muted">
-                                                                <b>
-                                                                    @if ($menu->orders_status == 2)
-                                                                        <p style="color: hotpink"> รับออเดอร์แล้ว
-                                                                            กำลังทำอาหาร
-                                                                        </p>
-                                                                    @elseif ($menu->orders_status == 3)
-                                                                        <p style="color: green"> ทำอาหารเสร็จแล้ว</p>
+                                                        <b>จำนวณ : {{ $menu->order_quantity }}</b>
+                                                        <br>
+                                                        <b>ราคา :
+                                                            @php
+                                                                $cp = $menu->price * $menu->order_quantity;
+                                                            @endphp
+                                                            {{ $cp }} </b>
+                                                        <br>
+                                                        <b>ผู้สั่งซื้อ : {{ $menu->users_name }}</b>
+                                                    <h5 class="text-muted">
+                                                        <b>
+                                                            @if ($menu->orders_status == 2)
+                                                                <p style="color: hotpink"> รับออเดอร์แล้ว
+                                                                    กำลังทำอาหาร
+                                                                </p>
+                                                            @elseif ($menu->orders_status == 3)
+                                                                <p style="color: green"> ทำอาหารเสร็จแล้ว</p>
 
-                                                                    @elseif ($menu->orders_status == 0)
-                                                                        <p style="color: red"> ยกเลิกออเดอร์</p>
-                                                                    @else
-                                                                        <p style="color: rgb(164, 205, 238)"> รอรับออกเดอร์
-                                                                            ...
-                                                                        </p>
-                                                                    @endif
+                                                            @elseif ($menu->orders_status == 0)
+                                                                <p style="color: red"> ยกเลิกออเดอร์</p>
+                                                            @else
+                                                                <p style="color: rgb(164, 205, 238)"> รอรับออกเดอร์
+                                                                    ...
+                                                                </p>
+                                                            @endif
 
 
-                                                                </b>
+                                                        </b>
+                                                    </h5>
                                                     </p>
                                                     <input type="hidden" name="menu_id" class="menu_id"
                                                         value="{{ $menu->menu_id }}">
@@ -105,32 +114,35 @@
                                                 <div class="card-body">
                                                     <h4 class="card-title">{{ $menu->menu_name . $menu->menu_id }}</h4>
                                                     <p class="card-text">
-                                                        <b>จำนวณ {{ $menu->order_quantity }}</b>
+                                                        <b>จำนวณ : {{ $menu->order_quantity }}</b>
                                                         <br>
-                                                        <b>ราคา
+                                                        <b>ราคา :
                                                             @php
-                                                                $cp = $menu->price*$menu->order_quantity;
+                                                                $cp = $menu->price * $menu->order_quantity;
                                                             @endphp
                                                             {{ $cp }} </b>
-                                                            <h5 class="text-muted">
-                                                                <b>
-                                                                    @if ($menu->orders_status == 2)
-                                                                        <p style="color: hotpink"> รับออเดอร์แล้ว
-                                                                            กำลังทำอาหาร
-                                                                        </p>
-                                                                    @elseif ($menu->orders_status == 3)
-                                                                        <p style="color: green"> ทำอาหารเสร็จแล้ว</p>
+                                                        <br>
+                                                        <b>ผู้สั่งซื้อ : {{ $menu->users_name }}</b>
+                                                    <h5 class="text-muted">
+                                                        <b>
+                                                            @if ($menu->orders_status == 2)
+                                                                <p style="color: hotpink"> รับออเดอร์แล้ว
+                                                                    กำลังทำอาหาร
+                                                                </p>
+                                                            @elseif ($menu->orders_status == 3)
+                                                                <p style="color: green"> ทำอาหารเสร็จแล้ว</p>
 
-                                                                    @elseif ($menu->orders_status == 0)
-                                                                        <p style="color: red"> ยกเลิกออเดอร์</p>
-                                                                    @else
-                                                                        <p style="color: rgb(164, 205, 238)"> รอรับออกเดอร์
-                                                                            ...
-                                                                        </p>
-                                                                    @endif
+                                                            @elseif ($menu->orders_status == 0)
+                                                                <p style="color: red"> ยกเลิกออเดอร์</p>
+                                                            @else
+                                                                <p style="color: rgb(164, 205, 238)"> รอรับออกเดอร์
+                                                                    ...
+                                                                </p>
+                                                            @endif
 
 
-                                                                </b>
+                                                        </b>
+                                                    </h5>
                                                     </p>
                                                     <input type="hidden" name="menu_id" class="menu_id"
                                                         value="{{ $menu->menu_id }}">

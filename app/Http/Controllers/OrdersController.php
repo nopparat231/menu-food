@@ -29,6 +29,7 @@ class OrdersController extends Controller
     $menus =  DB::table('menus')
       ->join('orders', 'orders.menu_id', '=', 'menus.id')
       ->join('restaurants', 'restaurants.id', '=', 'menus.restaurant_id')
+      ->join('users', 'users.id', '=', 'orders.user_id')
       ->select(
         'menus.id as menu_id',
         'menus.user_id',
@@ -45,7 +46,8 @@ class OrdersController extends Controller
         'orders.orders_detail',
         'orders.order_quantity',
         'orders.orders_status',
-        'orders.created_at'
+        'orders.created_at',
+        'users.name as users_name'
       )
       // ->where('orders.user_id', '=', Auth::user()->id)
       ->where('orders.orders_status', '!=', 4)
