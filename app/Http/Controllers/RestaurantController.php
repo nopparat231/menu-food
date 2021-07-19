@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class RestaurantController extends Controller
 {
@@ -14,7 +16,7 @@ class RestaurantController extends Controller
      */
     public function index(Request $request)
     {
-                /*
+        /*
         AJAX request
         */
         $search = $request->search;
@@ -44,7 +46,15 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        return view("restaurant/addRestaurant");
+        $res = DB::table('restaurants')
+            ->select('*')->where('user_id', '=', Auth::user()->id)->limit(1)->get();
+
+
+        if ($res->isEmpty()) {
+            return view("restaurant/addRestaurant")->with(['res' => $res]);
+        } else {
+            return view("restaurant/addRestaurant")->with(['res' => $res]);
+        }
     }
 
     /**

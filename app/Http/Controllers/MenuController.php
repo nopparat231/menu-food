@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use App\Models\Menu;
 use Illuminate\Http\Request;
@@ -54,9 +55,16 @@ class MenuController extends Controller
 
     public function create()
     {
-        $res = DB::table('restaurants')
-            ->select('*')->where('user_id', '=', Auth::user()->id )->limit(1)->get();
-        return view('menu.create')->with(['res' => $res]);
+        if (Auth::check()) {
+            $res = DB::table('restaurants')
+                ->select('*')->where('user_id', '=', Auth::user()->id)->limit(1)->get();
+
+            if ($res->isEmpty()) {
+                return view("restaurant/addRestaurant")->with(['res' => $res]);
+            } else {
+                return view('menu.create')->with(['res' => $res]);
+            }
+        }
     }
 
 

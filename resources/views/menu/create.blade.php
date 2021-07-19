@@ -8,7 +8,7 @@
 
                     <div class="card-body">
 
-                        <h5 class="card-title">ร้าน {{ $res[0]->restaurant_name }}</h5>
+                        <h3 class="card-title">{{ $res[0]->restaurant_name }}</h3>
                         <form action="{{ url('menu') }}" method="POST">
                             @csrf
                             <div class="form-group">

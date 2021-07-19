@@ -109,7 +109,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                                     <a class="dropdown-item" href="{{ url('addRestaurant') }}">
-                                        เพิ่มร้าน
+                                        จัดการร้าน
                                     </a>
                                     <a class="dropdown-item" href="{{ url('menu/create') }}">
                                         จัดการเมนูอาหา
