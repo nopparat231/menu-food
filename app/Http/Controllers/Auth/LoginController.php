@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
+
 
 class LoginController extends Controller
 {
@@ -39,7 +43,8 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         $input = $request->all();
 
         $this->validate($request, [
@@ -47,14 +52,50 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        if(auth()->attempt(array('email' => $input['email'],'password' => $input['password']))){
-            if (auth()->user()->is_admin == 1){
+        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
+            if (auth()->user()->is_admin == 1) {
                 return redirect()->route('admin.home');
-            }else{
+            } else {
                 return redirect('MyOrders');
             }
-        }else{
-            return redirect()->route('login')->with('error',"Email หรือ Password ไม่ถูกต้อง");
+        } else {
+            return redirect()->route('login')->with('error', "Email หรือ Password ไม่ถูกต้อง");
         }
+    }
+
+    // Line callback
+    public function handleLineCallback()
+    {
+        $user = Socialite::driver('line')->user();
+
+        $this->_registerOrLoginUser($user);
+
+        // Return home after login
+        return redirect()->route('home');
+    }
+
+    protected function _registerOrLoginUser($data)
+    {
+        // echo "<pre>";
+        // print_r($data);
+        // echo "</pre>";
+
+        if ($data->email == "") {
+            $email = $data->id;
+        } else {
+            $email = $data->email;
+        }
+
+        $user = User::where('email', '=', $email)->first();
+        if (!$user) {
+            $user = new User();
+            $user->name = $data->name;
+            $user->email = $email;
+            $user->provider_id = $data->id;
+            $user->avatar = $data->avatar;
+            $user->save();
+        }
+
+        Auth::login($user);
     }
 }

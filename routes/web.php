@@ -50,6 +50,12 @@ Route::delete('delete-from-cart',[AddToCartController::class, 'deletefromcart'])
 Route::get('clear-cart',[AddToCartController::class, 'clearcart']);
 
 
+// Line login
+Route::get('login/line', [App\Http\Controllers\Auth\LoginController::class, 'redirectToLine'])->name('login.line');
+Route::get('login/line/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleLineCallback']);
+
+Route::post('hooks', [LineHookController::class, 'hooks']);
+
 
 // Route::get('/home', [App\Http\Controllers\TodoController::class, 'index']);
 // Route::post('/todos/create', [App\Http\Controllers\TodoController::class, 'store']);

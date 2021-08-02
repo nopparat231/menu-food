@@ -12,12 +12,12 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
     <!-- Scripts -->
-    <script src="{{ secure_asset('js/app.js') }}"></script>
-    <script src="{{ secure_asset('js/Cart.js') }}"></script>
-    <script src="{{ secure_asset('js/Order.js') }}"></script>
-    <script src="{{ secure_asset('js/findd.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/Cart.js') }}"></script>
+    <script src="{{ asset('js/Order.js') }}"></script>
+    <script src="{{ asset('js/findd.js') }}"></script>
     <!-- Scripts Select2 -->
-    <script src="{{ secure_asset('js/select2.min.js') }}"></script>
+    <script src="{{ asset('js/select2.min.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -27,9 +27,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
     <!-- Styles -->
-    <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Styles Select2 -->
-    <link href="{{ secure_asset('css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
 
 
     <!-- JavaScript AlertifyJS -->
