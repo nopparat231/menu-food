@@ -101,6 +101,10 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
+
+                                <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}"
+                                    style="border: 1px solid #cccccc; border-radius: 5px; width: 39px; height: auto;float:left; margin-right: 7px;">
+
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -125,7 +129,7 @@
                                     <hr>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                 document.getElementById('logout-form').submit();">
+                                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
