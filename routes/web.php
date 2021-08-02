@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LineHookController;
 use App\Http\Controllers\AddToCartController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\OrdersController;
@@ -49,10 +50,9 @@ Route::get('/load-cart-data', [AddToCartController::class, 'cartloadbyajax']);
 Route::delete('delete-from-cart',[AddToCartController::class, 'deletefromcart']);
 Route::get('clear-cart',[AddToCartController::class, 'clearcart']);
 
-
 // Line login
-Route::get('login/line', [App\Http\Controllers\Auth\LoginController::class, 'redirectToLine'])->name('login.line');
-Route::get('login/line/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleLineCallback']);
+Route::get('login/line', [LoginController::class, 'redirectToLine'])->name('login.line');
+Route::get('login/line/callback', [LoginController::class, 'handleLineCallback']);
 
 Route::post('hooks', [LineHookController::class, 'hooks']);
 
