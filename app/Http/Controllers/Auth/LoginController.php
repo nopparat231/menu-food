@@ -93,13 +93,19 @@ class LoginController extends Controller
             $email = $data->email;
         }
 
+        if ($data->avatar == "") {
+            $avatar = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
+        } else {
+            $avatar = $data->avatar;
+        }
+
         $user = User::where('email', '=', $email)->first();
         if (!$user) {
             $user = new User();
             $user->name = $data->name;
             $user->email = $email;
             $user->provider_id = $data->id;
-            $user->avatar = $data->avatar;
+            $user->avatar = $avatar;
             $user->save();
         }
 
