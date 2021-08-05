@@ -89,7 +89,8 @@
                 <div class="card" style="text-align: center">
                     <div class="card-header">{{ __('แอดไลน์เพื่อรับการแจ้งเตือนเมนู') }}</div>
                     <div class="card-body">
-                        <h3>@573pogdt</h3>
+                        <br>
+                        <label style="font-size: 3rem"><b>@573pogdt</b></label>
                         <img src="https://qr-official.line.me/sid/L/573pogdt.png">
                     </div>
                 </div>
