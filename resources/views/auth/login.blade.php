@@ -26,18 +26,17 @@
 
                             <p style="text-align: center">OR</p>
 
-                     
+
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-3">
-                                    <input id="email" type="email"
-                                           class="form-control @error('email') is-invalid @enderror" name="email"
-                                           value="{{ old('email') }}" required autocomplete="email" autofocus
-                                           placeholder="E-Mail Address">
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                        name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
+                                        placeholder="E-Mail Address">
 
                                     @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                             </div>
@@ -45,13 +44,13 @@
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-3">
                                     <input id="password" type="password"
-                                           class="form-control @error('password') is-invalid @enderror" name="password"
-                                           required autocomplete="current-password" placeholder="Password">
+                                        class="form-control @error('password') is-invalid @enderror" name="password"
+                                        required autocomplete="current-password" placeholder="Password">
 
                                     @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                             </div>
@@ -59,8 +58,8 @@
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember"
-                                               id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                            {{ old('remember') ? 'checked' : '' }}>
 
                                         <label class="form-check-label" for="remember">
                                             {{ __('Remember Me') }}
@@ -84,7 +83,19 @@
                             </div>
                         </form>
                     </div>
+
                 </div>
+
+                <div class="card" style="text-align: center">
+                    <div class="card-header">{{ __('แอดไลน์เพื่อรับการแจ้งเตือนเมนู') }}</div>
+
+                    <div class="card-body">
+                        <h3><label><b>@573pogdt</b></label></h3>
+                        <img src="https://qr-official.line.me/sid/L/573pogdt.png">
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
