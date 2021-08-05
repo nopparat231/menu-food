@@ -16,12 +16,11 @@ class CreateRestaurant extends Migration
         Schema::create('restaurants', function (Blueprint $table) {
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
-            $table->id();
+            $table->increments('id');
 
             $table->string('user_id');
             $table->string('restaurant_name');
-            $table->string('restaurant_detail');
-            $table->string('restaurant_status');
+            $table->integer('restaurant_status');
 
             $table->timestamps();
         });

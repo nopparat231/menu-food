@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 02, 2021 at 04:08 PM
+-- Generation Time: Aug 05, 2021 at 06:25 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -44,7 +44,7 @@ CREATE TABLE `failed_jobs` (
 --
 
 CREATE TABLE `menus` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `user_id` varchar(255) NOT NULL,
   `restaurant_id` varchar(255) NOT NULL,
   `menu_name` varchar(255) NOT NULL,
@@ -87,10 +87,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `orders` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `user_id` varchar(255) NOT NULL,
   `restaurant_id` varchar(255) NOT NULL,
   `menu_id` varchar(255) NOT NULL,
+  `order_quantity` int(11) NOT NULL,
   `orders_detail` varchar(255) NOT NULL,
   `orders_status` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -116,11 +117,10 @@ CREATE TABLE `password_resets` (
 --
 
 CREATE TABLE `restaurants` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `user_id` varchar(255) NOT NULL,
   `restaurant_name` varchar(255) NOT NULL,
-  `restaurant_detail` varchar(255) NOT NULL,
-  `restaurant_status` varchar(255) NOT NULL,
+  `restaurant_status` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -207,7 +207,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -219,13 +219,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `restaurants`
 --
 ALTER TABLE `restaurants`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`

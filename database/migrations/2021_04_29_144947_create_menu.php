@@ -18,7 +18,7 @@ class CreateMenu extends Migration
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
             
-            $table->id();
+            $table->increments('id');
             $table->string('user_id');
             $table->string('restaurant_id');
             $table->string('menu_name');

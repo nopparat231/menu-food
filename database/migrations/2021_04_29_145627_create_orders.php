@@ -16,11 +16,12 @@ class CreateOrders extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
-            $table->id();
+            $table->increments('id');
 
             $table->string('user_id');
             $table->string('restaurant_id');
             $table->string('menu_id');
+            $table->integer('order_quantity');
             $table->string('orders_detail');
             $table->string('orders_status');
 
