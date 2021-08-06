@@ -148,6 +148,10 @@ class OrdersController extends Controller
 
       $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("Order อาหารทำเสร็จแล้ว!");
       $response = $bot->pushMessage(Auth::user()->provider_id, $textMessageBuilder);
+      if ($response->isSucceeded()) {
+        echo 'Succeeded!';
+        return;
+    }
     }
 
     return response()->json(['status' => 'Orders Update Successfully.']);
