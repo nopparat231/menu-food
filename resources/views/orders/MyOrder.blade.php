@@ -40,7 +40,7 @@
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="card-body">
-                                                    <h4 class="card-title">{{ $menu->menu_name . $menu->menu_id }}</h4>
+                                                    <h4 class="card-title">{{ $menu->menu_name }}</h4>
                                                     <p class="card-text">
                                                         <b>จำนวณ : {{ $menu->order_quantity }}</b>
                                                         <br>

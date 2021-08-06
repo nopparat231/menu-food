@@ -32,10 +32,6 @@ class LineHookController extends Controller
         // Failed
         echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
-
-        // $params = $request->all();
-        // logger(json_encode($params, JSON_UNESCAPED_UNICODE));
-        // return response('hello world', 200);
     }
 
     public function index()

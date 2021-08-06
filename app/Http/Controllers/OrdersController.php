@@ -137,9 +137,18 @@ class OrdersController extends Controller
   {
     $orders_status = $request->input('orders_status');
 
-    DB::table('orders')
-      ->where('id', $id)
-      ->update(['orders_status' => $orders_status]);
+    // DB::table('orders')
+    //   ->where('id', $id)
+    //   ->update(['orders_status' => $orders_status]);
+
+    if($orders_status == 3){
+      $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(env('LINE_BOT_CHANNEL_ACCESS_TOKEN'));
+      $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => env('LINE_BOT_CHANNEL_SECRET')]);
+
+
+      $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("Order อาหารทำเสร็จแล้ว!");
+      $response = $bot->pushMessage(Auth::user()->provider_id, $textMessageBuilder);
+    }
 
     return response()->json(['status' => 'Orders Update Successfully.']);
   }
