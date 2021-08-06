@@ -152,6 +152,8 @@ class OrdersController extends Controller
         echo 'Succeeded!';
         return;
     }
+     // Failed
+     echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
     }
 
     //return response()->json(['status' => 'Orders Update Successfully.']);
