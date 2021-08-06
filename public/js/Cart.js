@@ -199,6 +199,7 @@ $(document).ready(function () {
         $.ajax({
             // url: "/add-to-orders",
             // method: "POST",
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: orders,
             success: function (response) {
                 console.log(orders);
