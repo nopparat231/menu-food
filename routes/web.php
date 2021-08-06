@@ -55,6 +55,7 @@ Route::get('login/line', [LoginController::class, 'redirectToLine'])->name('logi
 Route::get('login/line/callback', [LoginController::class, 'handleLineCallback']);
 
 Route::post('hooks', [LineHookController::class, 'hooks']);
+Route::view('message', 'message');
 
 
 // Route::get('/home', [App\Http\Controllers\TodoController::class, 'index']);

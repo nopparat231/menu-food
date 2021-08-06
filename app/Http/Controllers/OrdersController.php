@@ -142,18 +142,7 @@ class OrdersController extends Controller
     //   ->update(['orders_status' => $orders_status]);
 
     if($orders_status){
-      $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(env('LINE_BOT_CHANNEL_ACCESS_TOKEN'));
-      $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => env('LINE_BOT_CHANNEL_SECRET')]);
-
-
-      $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("Order อาหารทำเสร็จแล้ว!");
-      $response = $bot->pushMessage(Auth::user()->provider_id, $textMessageBuilder);
-      if ($response->isSucceeded()) {
-        echo 'Succeeded!';
-        return;
-    }
-     // Failed
-     echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+      
     }
 
     //return response()->json(['status' => 'Orders Update Successfully.']);
