@@ -173,6 +173,12 @@ $(document).ready(function () {
         const user_id = document.getElementById("user_id").value;
         const orders_details = "test detail";
 
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
         let orders = {};
         for (let i = 0; i < myorder.length; i++) {
             orders = Object.assign({
