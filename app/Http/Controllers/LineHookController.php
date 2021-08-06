@@ -16,13 +16,13 @@ class LineHookController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public static function hooks(Request $request)
+    public static function hooks()
     {
         $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(env('LINE_BOT_CHANNEL_ACCESS_TOKEN'));
         $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => env('LINE_BOT_CHANNEL_SECRET')]);
 
 
-        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($request->input('message'));
+        $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("ทำอาหารเสร็จแล้ว");
         $response = $bot->pushMessage(Auth::user()->provider_id, $textMessageBuilder);
         if ($response->isSucceeded()) {
             echo 'Succeeded!';
