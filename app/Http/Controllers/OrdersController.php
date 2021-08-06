@@ -154,7 +154,7 @@ class OrdersController extends Controller
     }
     }
 
-    return response()->json(['status' => 'Orders Update Successfully.']);
+    //return response()->json(['status' => 'Orders Update Successfully.']);
   }
 
   /**
