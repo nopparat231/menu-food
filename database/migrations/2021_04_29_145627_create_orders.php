@@ -19,7 +19,6 @@ class CreateOrders extends Migration
             $table->increments('id');
 
             $table->string('user_id');
-            $table->string('restaurant_id');
             $table->string('menu_id');
             $table->integer('order_quantity');
             $table->string('orders_detail');

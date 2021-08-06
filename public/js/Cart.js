@@ -202,10 +202,10 @@ $(document).ready(function () {
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: orders,
             success: function (response) {
-                console.log(orders);
-                //alertify.set("notifier", "position", "top-right");
-                //alertify.success(response.success);
-                //location.href = "MyOrders";
+                //console.log(orders);
+                alertify.set("notifier", "position", "top-right");
+                alertify.success(response.success);
+                location.href = "MyOrders";
                 //cartload();
             },
         });
