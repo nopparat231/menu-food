@@ -197,12 +197,9 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            // url: "/add-to-orders",
-            // method: "POST",
-            data: {
-                _token: $("input[name=_token]").val(),
-                orders: orders,
-            },
+            url: "/add-to-orders",
+            method: "POST",
+            data: orders,
             success: function (response) {
                 console.log(orders);
                 alertify.set("notifier", "position", "top-right");
