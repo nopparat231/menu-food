@@ -181,30 +181,33 @@ $(document).ready(function () {
 
         let orders = {};
         for (let i = 0; i < myorder.length; i++) {
-            orders = Object.assign({
-                [i]: {
-                    user_id: user_id,
-                    menu_id: myorder[i].id,
-                    orders_detail: orders_details,
-                    order_quantity: myorder[i].order_quantity,
-                    orders_status: 1,
-                    count_order: myorder.length
+            orders = Object.assign(
+                {
+                    [i]: {
+                        user_id: user_id,
+                        menu_id: myorder[i].id,
+                        orders_detail: orders_details,
+                        order_quantity: myorder[i].order_quantity,
+                        orders_status: 1,
+                        count_order: myorder.length,
+                    },
                 },
-            },orders);
+                orders
+            );
         }
 
         $.ajax({
-            url: "/add-to-orders",
-            method: "POST",
+            // url: "/add-to-orders",
+            // method: "POST",
             data: {
                 _token: $("input[name=_token]").val(),
-                orders
+                orders: orders,
             },
             success: function (response) {
                 console.log(orders);
                 alertify.set("notifier", "position", "top-right");
                 alertify.success(response.success);
-                location.href = 'MyOrders';
+                location.href = "MyOrders";
                 //cartload();
             },
         });
