@@ -141,7 +141,7 @@ class OrdersController extends Controller
     //   ->where('id', $id)
     //   ->update(['orders_status' => $orders_status]);
 
-    if($orders_status == 3){
+    if($orders_status){
       $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(env('LINE_BOT_CHANNEL_ACCESS_TOKEN'));
       $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => env('LINE_BOT_CHANNEL_SECRET')]);
 
