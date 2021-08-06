@@ -141,8 +141,8 @@ class OrdersController extends Controller
     //   ->where('id', $id)
     //   ->update(['orders_status' => $orders_status]);
 
-    if($orders_status){
-      
+    if($orders_status == 3){
+      LineHookController::hooks("Tessmess");
     }
 
     //return response()->json(['status' => 'Orders Update Successfully.']);
