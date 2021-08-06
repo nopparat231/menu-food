@@ -197,14 +197,14 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: "/add-to-orders",
-            method: "POST",
+            // url: "/add-to-orders",
+            // method: "POST",
             data: orders,
             success: function (response) {
                 console.log(orders);
-                alertify.set("notifier", "position", "top-right");
-                alertify.success(response.success);
-                location.href = "MyOrders";
+                //alertify.set("notifier", "position", "top-right");
+                //alertify.success(response.success);
+                //location.href = "MyOrders";
                 //cartload();
             },
         });
