@@ -18,7 +18,7 @@
                         <h1>Add Line For Notify</h1>
                         <img src="https://qr-official.line.me/sid/L/573pogdt.png">
 
-                        <form action="\hooks" method="post">
+                        <form action="\hooks" method="get">
                             @csrf
                             <input type="text" name="users_provider_id" value="Ufbf4e8677628c8ab7a701b72df5f96fe">
                             <button type="send" class="btn btn-primary">Send</button>
