@@ -69,7 +69,7 @@ $(document).ready(function () {
             success: function (response) {
                 alertify.set("notifier", "position", "top-right");
                 alertify.success("ทำอาหารเสร็จแล้ว");
-                location.reload();
+                //location.reload();
                 //cartload();
             },
         });
