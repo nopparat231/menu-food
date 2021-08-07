@@ -16,8 +16,9 @@ class LineHookController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function hooks($users_provider_id)
+    public function hooks(Request $request)
     {
+        $users_provider_id = $request->input('users_provider_id');
 
         $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(env('LINE_BOT_CHANNEL_ACCESS_TOKEN'));
         $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => env('LINE_BOT_CHANNEL_SECRET')]);
