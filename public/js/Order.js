@@ -54,7 +54,17 @@ $(document).ready(function () {
             .find(".users_provider_id")
             .val();
         var orders_text = "ทำอาหารเสร็จแล้ว";
-        LineAlert(users_provider_id, orders_text);
+        //LineAlert(users_provider_id, orders_text);
+
+        $.ajax({
+            url: "/hooks/",
+            method: "GET",
+            data: {
+                _token: $("input[name=_token]").val(),
+                users_provider_id: users_provider_id,
+                orders_text: orders_text,
+            }
+        });
 
         $.ajax({
             url: "/update-orders/" + id,
