@@ -51,6 +51,7 @@
                                                             {{ $cp }} </b>
                                                         <br>
                                                         <b>ผู้สั่งซื้อ : {{ $menu->users_name }}</b>
+                                                        <input type="hidden" name="users_provider_id" value="{{ $menu->users_provider_id }}">
                                                     <h5 class="text-muted">
                                                         <b>
                                                             @if ($menu->orders_status == 2)
@@ -112,7 +113,7 @@
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="card-body">
-                                                    <h4 class="card-title">{{ $menu->menu_name . $menu->menu_id }}</h4>
+                                                    <h4 class="card-title">{{ $menu->menu_name }}</h4>
                                                     <p class="card-text">
                                                         <b>จำนวณ : {{ $menu->order_quantity }}</b>
                                                         <br>
@@ -123,6 +124,7 @@
                                                             {{ $cp }} </b>
                                                         <br>
                                                         <b>ผู้สั่งซื้อ : {{ $menu->users_name }}</b>
+                                                        <input type="hidden" name="users_provider_id" value="{{ $menu->users_provider_id }}">
                                                     <h5 class="text-muted">
                                                         <b>
                                                             @if ($menu->orders_status == 2)

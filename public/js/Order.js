@@ -43,6 +43,7 @@ $(document).ready(function () {
         });
 
         var id = $(this).closest(".product_data").find(".orders_id").val();
+        var users_provider_id = $(this).closest(".product_data").find(".users_provider_id").val();
 
         $.ajax({
             url: "/update-orders/" + id,
@@ -50,6 +51,7 @@ $(document).ready(function () {
             data: {
                 _token: $("input[name=_token]").val(),
                 orders_status: 3,
+                users_provider_id: users_provider_id
             },
             success: function (response) {
                 alertify.set("notifier", "position", "top-right");

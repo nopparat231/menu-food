@@ -47,7 +47,8 @@ class OrdersController extends Controller
         'orders.order_quantity',
         'orders.orders_status',
         'orders.created_at',
-        'users.name as users_name'
+        'users.name as users_name',
+        'users.provider_id as users_provider_id'
       )
       // ->where('orders.user_id', '=', Auth::user()->id)
       ->where('orders.orders_status', '!=', 4)
@@ -136,13 +137,14 @@ class OrdersController extends Controller
   public function update(Request $request, $id)
   {
     $orders_status = $request->input('orders_status');
+    $users_provider_id = $request->input('users_provider_id');
 
     // DB::table('orders')
     //   ->where('id', $id)
     //   ->update(['orders_status' => $orders_status]);
 
     if($orders_status == 3){
-      LineHookController::hooks();
+      LineHookController::hooks($users_provider_id);
     }
 
     //return response()->json(['status' => 'Orders Update Successfully.']);
