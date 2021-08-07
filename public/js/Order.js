@@ -1,7 +1,7 @@
-var pathNow = window.location.pathname;
-if (pathNow == "/" || pathNow == "/MyOrders") {
-    setTimeout("location.reload(true);", 15000);
-}
+// var pathNow = window.location.pathname;
+// if (pathNow == "/" || pathNow == "/MyOrders") {
+//     setTimeout("location.reload(true);", 15000);
+// }
 
 $(document).ready(function () {
     $(".con-order-btn").click(function (e) {
