@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    cartload();
+    //cartload();
 });
 
 function cartload() {
