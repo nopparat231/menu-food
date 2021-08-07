@@ -39,7 +39,7 @@ Route::get('/restaurant/{id}', [MenuController::class, 'findd']);
 
 Route::get('MyOrders', [OrdersController::class, 'index']);
 Route::post('/add-to-orders', [OrdersController::class, 'create']);
-Route::any('/update-orders', [OrdersController::class, 'update']);
+Route::any('/update-orders/{$users_provider_id}', [OrdersController::class, 'update']);
 
 Route::get('/Cart',[AddToCartController::class, 'index']);
 
@@ -54,7 +54,7 @@ Route::get('clear-cart',[AddToCartController::class, 'clearcart']);
 Route::get('login/line', [LoginController::class, 'redirectToLine'])->name('login.line');
 Route::get('login/line/callback', [LoginController::class, 'handleLineCallback']);
 
-Route::get('hooks', [LineHookController::class, 'hooks']);
+Route::any('hooks', [LineHookController::class, 'hooks']);
 Route::view('message', 'message');
 
 
