@@ -32,7 +32,7 @@ class LineHookController extends Controller
         // }
 
         // Failed
-        echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+        // echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
     }
 
