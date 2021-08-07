@@ -18,6 +18,8 @@ $(document).ready(function () {
             .closest(".product_data")
             .find(".users_provider_id")
             .val();
+        var orders_text = "รับออเดอร์แล้ว";
+        LineAlert(users_provider_id, orders_text);
 
         $.ajax({
             url: "/update-orders/" + id,
@@ -26,7 +28,7 @@ $(document).ready(function () {
                 _token: $("input[name=_token]").val(),
                 orders_status: 2,
                 users_provider_id: users_provider_id,
-                orders_text: "รับออเดอร์แล้ว",
+                orders_text: orders_text,
             },
             success: function (response) {
                 alertify.set("notifier", "position", "top-right");
@@ -76,42 +78,6 @@ $(document).ready(function () {
     });
 });
 
-// $(document).ready(function () {
-//     $(".done-order-btn").click(function (e) {
-//         e.preventDefault();
-
-//         $.ajaxSetup({
-//             headers: {
-//                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-//             },
-//         });
-
-//         var users_provider_id = $(this)
-//             .closest(".product_data")
-//             .find(".users_provider_id")
-//             .val();
-
-//         var orders_text = "ทำอาหารเสร็จแล้ว";
-
-//         $.ajax({
-//             url: "/hooks/",
-//             method: "GET",
-//             data: {
-//                 _token: $("input[name=_token]").val(),
-//                 users_provider_id: users_provider_id,
-//                 orders_text: orders_text,
-//             },
-//             success: function (response) {
-//                 // LineAlert();
-//                 // alertify.set("notifier", "position", "top-right");
-//                 // alertify.success("ทำอาหารเสร็จแล้ว");
-//                 // location.reload();
-//                 //cartload();
-//             },
-//         });
-//     });
-// });
-
 function LineAlert(users_provider_id, orders_text) {
     $.ajax({
         url: "/hooks/",
@@ -139,7 +105,9 @@ $(document).ready(function () {
             .closest(".product_data")
             .find(".users_provider_id")
             .val();
-
+        var orders_text = "ยกเลิกออเดอร์แล้ว";
+        LineAlert(users_provider_id, orders_text);
+        
         $.ajax({
             url: "/update-orders/" + id,
             method: "POST",
@@ -147,7 +115,7 @@ $(document).ready(function () {
                 _token: $("input[name=_token]").val(),
                 orders_status: 0,
                 users_provider_id: users_provider_id,
-                orders_text: "ยกเลิกออเดอร์แล้ว",
+                orders_text: orders_text,
             },
             success: function (response) {
                 alertify.set("notifier", "position", "top-right");
@@ -174,6 +142,8 @@ $(document).ready(function () {
             .closest(".product_data")
             .find(".users_provider_id")
             .val();
+        var orders_text = "ลบเลิกออเดอร์แล้ว";
+        LineAlert(users_provider_id, orders_text);
 
         $.ajax({
             url: "/update-orders/" + id,
@@ -182,7 +152,7 @@ $(document).ready(function () {
                 _token: $("input[name=_token]").val(),
                 orders_status: 4,
                 users_provider_id: users_provider_id,
-                orders_text: "ลบเลิกออเดอร์แล้ว",
+                orders_text: orders_text,
             },
             success: function (response) {
                 alertify.set("notifier", "position", "top-right");
