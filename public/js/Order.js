@@ -49,7 +49,7 @@ $(document).ready(function () {
             .val();
 
         $.ajax({
-            url: "/update-orders/",
+            url: "/update-orders/" + id,
             method: "POST",
             data: {
                 _token: $("input[name=_token]").val(),
@@ -60,7 +60,7 @@ $(document).ready(function () {
             success: function (response) {
                 alertify.set("notifier", "position", "top-right");
                 alertify.success("ทำอาหารเสร็จแล้ว");
-                //location.reload();
+                location.reload();
                 //cartload();
             },
         });
