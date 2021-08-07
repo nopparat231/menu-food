@@ -53,7 +53,7 @@ $(document).ready(function () {
             .closest(".product_data")
             .find(".users_provider_id")
             .val();
-
+        var orders_text = "ทำอาหารเสร็จแล้ว";
         LineAlert(users_provider_id, orders_text);
 
         $.ajax({
@@ -64,7 +64,7 @@ $(document).ready(function () {
                 id: id,
                 orders_status: 3,
                 users_provider_id: users_provider_id,
-                orders_text: "ทำอาหารเสร็จแล้ว",
+                orders_text: orders_text,
             },
             success: function (response) {
                 alertify.set("notifier", "position", "top-right");
