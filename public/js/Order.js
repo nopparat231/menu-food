@@ -54,7 +54,7 @@ $(document).ready(function () {
             .find(".users_provider_id")
             .val();
         var orders_text = "ทำอาหารเสร็จแล้ว";
-        LineAlert(users_provider_id, orders_text);
+        //LineAlert(users_provider_id, orders_text);
 
         $.ajax({
             url: "/update-orders/" + id,
@@ -70,6 +70,42 @@ $(document).ready(function () {
                 alertify.set("notifier", "position", "top-right");
                 alertify.success("ทำอาหารเสร็จแล้ว");
                 //location.reload();
+                //cartload();
+            },
+        });
+    });
+});
+
+$(document).ready(function () {
+    $(".done-order-btn").click(function (e) {
+        e.preventDefault();
+
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+
+        var users_provider_id = $(this)
+            .closest(".product_data")
+            .find(".users_provider_id")
+            .val();
+
+        var orders_text = "ทำอาหารเสร็จแล้ว";
+
+        $.ajax({
+            url: "/hooks/",
+            method: "GET",
+            data: {
+                _token: $("input[name=_token]").val(),
+                users_provider_id: users_provider_id,
+                orders_text: orders_text,
+            },
+            success: function (response) {
+                // LineAlert();
+                // alertify.set("notifier", "position", "top-right");
+                // alertify.success("ทำอาหารเสร็จแล้ว");
+                // location.reload();
                 //cartload();
             },
         });
