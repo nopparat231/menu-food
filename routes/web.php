@@ -54,7 +54,7 @@ Route::get('clear-cart',[AddToCartController::class, 'clearcart']);
 Route::get('login/line', [LoginController::class, 'redirectToLine'])->name('login.line');
 Route::get('login/line/callback', [LoginController::class, 'handleLineCallback']);
 
-//Route::post('hooks', [LineHookController::class, 'hooks']);
+Route::get('hooks', [LineHookController::class, 'hooks']);
 Route::view('message', 'message');
 
 
