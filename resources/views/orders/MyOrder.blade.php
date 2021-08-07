@@ -51,7 +51,7 @@
                                                             {{ $cp }} </b>
                                                         <br>
                                                         <b>ผู้สั่งซื้อ : {{ $menu->users_name }}</b>
-                                                        <input type="hidden" name="users_provider_id" value="{{ $menu->users_provider_id }}">
+                                                        <input type="hidden" name="users_provider_id" class="users_provider_id" value="{{ $menu->users_provider_id }}">
                                                     <h5 class="text-muted">
                                                         <b>
                                                             @if ($menu->orders_status == 2)
@@ -124,7 +124,7 @@
                                                             {{ $cp }} </b>
                                                         <br>
                                                         <b>ผู้สั่งซื้อ : {{ $menu->users_name }}</b>
-                                                        <input type="hidden" name="users_provider_id" value="{{ $menu->users_provider_id }}">
+                                                        <input type="hidden" name="users_provider_id" class="users_provider_id"  value="{{ $menu->users_provider_id }}">
                                                     <h5 class="text-muted">
                                                         <b>
                                                             @if ($menu->orders_status == 2)
