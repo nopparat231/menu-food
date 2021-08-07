@@ -26,13 +26,13 @@ class LineHookController extends Controller
 
         $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("ทำอาหารเสร็จแล้ว");
         $response = $bot->pushMessage($users_provider_id, $textMessageBuilder);
-        if ($response->isSucceeded()) {
-            echo 'Succeeded!';
-            return;
-        } else {
-            //Failed
-            echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-        }
+        // if ($response->isSucceeded()) {
+        //     echo 'Succeeded!';
+        //     return;
+        // } else {
+        //     //Failed
+        //     echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+        // }
     }
 
     public function index()
