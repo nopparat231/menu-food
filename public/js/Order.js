@@ -35,7 +35,7 @@ $(document).ready(function () {
 $(document).ready(function () {
     $(".done-order-btn").click(function (e) {
         e.preventDefault();
-
+        LineAlert();
         $.ajaxSetup({
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
@@ -58,7 +58,7 @@ $(document).ready(function () {
                 users_provider_id: users_provider_id,
             },
             success: function (response) {
-                LineAlert();
+                
                 alertify.set("notifier", "position", "top-right");
                 alertify.success("ทำอาหารเสร็จแล้ว");
                 //location.reload();
