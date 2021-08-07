@@ -71,7 +71,7 @@ $(document).ready(function () {
             success: function (response) {
                 alertify.set("notifier", "position", "top-right");
                 alertify.success("ทำอาหารเสร็จแล้ว");
-                //location.reload();
+                location.reload();
                 //cartload();
             },
         });
@@ -107,7 +107,7 @@ $(document).ready(function () {
             .val();
         var orders_text = "ยกเลิกออเดอร์แล้ว";
         LineAlert(users_provider_id, orders_text);
-        
+
         $.ajax({
             url: "/update-orders/" + id,
             method: "POST",
