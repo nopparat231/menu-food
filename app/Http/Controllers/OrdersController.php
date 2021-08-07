@@ -134,8 +134,9 @@ class OrdersController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
+  public function update(Request $request)
   {
+    $id = $request->input('id');
     $orders_status = $request->input('orders_status');
     $users_provider_id = $request->input('users_provider_id');
 
