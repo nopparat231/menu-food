@@ -39,7 +39,7 @@ Route::get('/restaurant/{id}', [MenuController::class, 'findd']);
 
 Route::get('MyOrders', [OrdersController::class, 'index']);
 Route::post('/add-to-orders', [OrdersController::class, 'create']);
-Route::post('/update-orders', [OrdersController::class, 'update']);
+Route::any('/update-orders', [OrdersController::class, 'update']);
 
 Route::get('/Cart',[AddToCartController::class, 'index']);
 
