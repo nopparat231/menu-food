@@ -20,7 +20,7 @@ class CreateRestaurant extends Migration
 
             $table->string('user_id');
             $table->string('restaurant_name');
-            $table->integer('restaurant_status');
+            //$table->integer('restaurant_status');
 
             $table->timestamps();
         });
