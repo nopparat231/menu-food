@@ -188,6 +188,7 @@ $(document).ready(function () {
                         menu_id: myorder[i].id,
                         orders_detail: orders_details,
                         order_quantity: myorder[i].order_quantity,
+                        orders_slip: 1,
                         orders_status: 1,
                         count_order: myorder.length,
                     },

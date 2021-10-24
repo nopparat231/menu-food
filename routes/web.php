@@ -57,6 +57,9 @@ Route::get('login/line/callback', [LoginController::class, 'handleLineCallback']
 Route::any('hooks', [LineHookController::class, 'hooks']);
 Route::view('message', 'message');
 
+Route::get('file-upload', [ OrdersController::class, 'fileUpload' ])->name('file.upload');
+Route::post('file-upload', [ OrdersController::class, 'fileUploadPost' ])->name('file.upload.post');
+
 
 // Route::get('/home', [App\Http\Controllers\TodoController::class, 'index']);
 // Route::post('/todos/create', [App\Http\Controllers\TodoController::class, 'store']);

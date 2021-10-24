@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\DB;
+use App\Models\File;
 
 class OrdersController extends Controller
 {
@@ -45,6 +46,7 @@ class OrdersController extends Controller
         'orders.menu_id',
         'orders.orders_detail',
         'orders.order_quantity',
+        'orders.orders_slip',
         'orders.orders_status',
         'orders.created_at',
         'users.name as users_name',
@@ -79,6 +81,7 @@ class OrdersController extends Controller
         'menu_id' => $request[$i]["menu_id"],
         'orders_detail' => $request[$i]["orders_detail"],
         'order_quantity' => $request[$i]["order_quantity"],
+        'orders_slip' => 1,
         'orders_status' => 1
       ];
     }
@@ -89,6 +92,37 @@ class OrdersController extends Controller
     // return redirect('MyOrders')->route('MyOrders')
     //     ->with('success', 'orders created successfully.');
 
+  }
+
+  public function fileUpload(Request $request)
+  {
+
+    //$res_id = $request->query('res_id');
+
+    $res = DB::table('restaurants')
+      ->select('*')->where('user_id', 1)->limit(1)->get();
+
+
+    return view("uploade")->with(['res' => $res]);
+  }
+
+  public function fileUploadPost(Request $request)
+  {
+    $request->validate([
+      'file' => 'required|file|mimes:jpg,jpeg,bmp,png,doc,docx,csv,rtf,xlsx,xls,txt,pdf,zip',
+    ]);
+
+    $id = $request->id;
+
+    $fileName = time() . '.' . $request->file->extension();
+
+    $request->file->move(public_path('slip'), $fileName);
+
+    DB::table('orders')
+      ->where('id', $id)
+      ->update(['orders_slip' => $fileName, 'orders_status' => 5]);
+
+    return redirect('/MyOrders')->with('file', $fileName);
   }
 
   /**
@@ -134,7 +168,7 @@ class OrdersController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request , $id)
+  public function update(Request $request, $id)
   {
     $orders_status = $request->input('orders_status');
     // $users_provider_id = $request->input('users_provider_id');

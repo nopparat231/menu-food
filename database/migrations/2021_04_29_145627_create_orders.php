@@ -22,6 +22,7 @@ class CreateOrders extends Migration
             $table->string('menu_id');
             $table->integer('order_quantity');
             $table->string('orders_detail');
+            $table->string('orders_slip');
             $table->string('orders_status');
 
             $table->timestamps();

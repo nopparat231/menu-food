@@ -51,7 +51,9 @@
                                                             {{ $cp }} </b>
                                                         <br>
                                                         <b>ผู้สั่งซื้อ : {{ $menu->users_name }}</b>
-                                                        <input type="hidden" name="users_provider_id" class="users_provider_id" value="{{ $menu->users_provider_id }}">
+                                                        <input type="hidden" name="users_provider_id"
+                                                            class="users_provider_id"
+                                                            value="{{ $menu->users_provider_id }}">
                                                     <h5 class="text-muted">
                                                         <b>
                                                             @if ($menu->orders_status == 2)
@@ -63,8 +65,15 @@
 
                                                             @elseif ($menu->orders_status == 0)
                                                                 <p style="color: red"> ยกเลิกออเดอร์</p>
+                                                            @elseif ($menu->orders_status == 5)
+                                                                <p style="color: rgb(194, 202, 118)"> จ่ายเงินแล้ว <a
+                                                                        href="{{ 'slip/' . $menu->orders_slip }}"
+                                                                        target="_bank">ดูสลิป</a></p>
+
                                                             @else
-                                                                <p style="color: rgb(164, 205, 238)"> รอรับออกเดอร์
+                                                                <p style="color: rgb(164, 205, 238)">
+
+                                                                    รอรับออกเดอร์
                                                                     ...
                                                                 </p>
                                                             @endif
@@ -124,7 +133,9 @@
                                                             {{ $cp }} </b>
                                                         <br>
                                                         <b>ผู้สั่งซื้อ : {{ $menu->users_name }}</b>
-                                                        <input type="hidden" name="users_provider_id" class="users_provider_id"  value="{{ $menu->users_provider_id }}">
+                                                        <input type="hidden" name="users_provider_id"
+                                                            class="users_provider_id"
+                                                            value="{{ $menu->users_provider_id }}">
                                                     <h5 class="text-muted">
                                                         <b>
                                                             @if ($menu->orders_status == 2)
@@ -136,10 +147,11 @@
 
                                                             @elseif ($menu->orders_status == 0)
                                                                 <p style="color: red"> ยกเลิกออเดอร์</p>
+                                                            @elseif ($menu->orders_status == 5)
+                                                                <p style="color: rgb(194, 202, 118)"> จ่ายเงินแล้ว</p>
                                                             @else
-                                                                <p style="color: rgb(164, 205, 238)"> รอรับออกเดอร์
-                                                                    ...
-                                                                </p>
+                                                                <a href="{{ url('file-upload') . '?id=' . $menu->orders_id. '&res_id=' . $menu->res_uid }}"
+                                                                    class=" btn btn-info">รอจ่ายเงิน</a>
                                                             @endif
 
 
