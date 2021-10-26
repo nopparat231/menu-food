@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2021 at 06:25 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.2
+-- Generation Time: Oct 26, 2021 at 03:06 PM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -56,6 +56,13 @@ CREATE TABLE `menus` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `menus`
+--
+
+INSERT INTO `menus` (`id`, `user_id`, `restaurant_id`, `menu_name`, `menu_img`, `menu_price`, `menu_detail`, `menu_status`, `created_at`, `updated_at`) VALUES
+(1, '1', '1', 'คะน้าหมูกรอบ', 'https://img.wongnai.com/p/1968x0/2020/05/23/593764daea7c40d486f9f349040710bf.jpg', 35, 'test', '0', '2021-10-19 06:07:15', '2021-10-19 06:07:15');
+
 -- --------------------------------------------------------
 
 --
@@ -89,14 +96,24 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `orders` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` varchar(255) NOT NULL,
-  `restaurant_id` varchar(255) NOT NULL,
   `menu_id` varchar(255) NOT NULL,
   `order_quantity` int(11) NOT NULL,
   `orders_detail` varchar(255) NOT NULL,
+  `orders_slip` varchar(255) NOT NULL,
   `orders_status` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `menu_id`, `order_quantity`, `orders_detail`, `orders_slip`, `orders_status`, `created_at`, `updated_at`) VALUES
+(1, '2', '1', 2, 'test detail', '1', '1', NULL, NULL),
+(2, '3', '1', 1, 'test detail', '1635063726.png', '5', NULL, NULL),
+(3, '3', '1', 1, 'test detail', '1635067385.png', '2', NULL, NULL),
+(4, '3', '1', 1, 'test detail', '1635075184.jpg', '5', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -120,10 +137,17 @@ CREATE TABLE `restaurants` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` varchar(255) NOT NULL,
   `restaurant_name` varchar(255) NOT NULL,
-  `restaurant_status` int(11) NOT NULL,
+  `restaurant_bank` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `restaurants`
+--
+
+INSERT INTO `restaurants` (`id`, `user_id`, `restaurant_name`, `restaurant_bank`, `created_at`, `updated_at`) VALUES
+(1, '1', 'ร้านลุงข้างบ้าน', 'ธนาคาร กรุงศรี 123456789', '2021-10-17 00:23:50', '2021-10-17 00:23:50');
 
 -- --------------------------------------------------------
 
@@ -144,6 +168,15 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `provider_id`, `avatar`, `email_verified_at`, `is_admin`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'rest', 'mail@mail.com', NULL, 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png', NULL, 0, '$2y$10$DuCladEBu8OYvw.EjW7vWO1Xc3ji5drLv4nbPraBe/M4Yf2ft1fzq', NULL, '2021-10-17 00:18:15', '2021-10-17 00:18:15'),
+(2, 'test test', 'test@test.test', NULL, 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png', NULL, 0, '$2y$10$rGkAzJxpMAd8MexvxIsGH.rmtoZFBHyuOATeN7Yy/iJYEqUqcwbb.', NULL, '2021-10-19 06:13:00', '2021-10-19 06:13:00'),
+(3, 'testuser', 'testuser@gmail.com', NULL, 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png', NULL, 0, '$2y$10$tyVzrZYAtbS61jedaWMs9.1Rs12q.fPqCyP64H1rtJH5pSy7xbj9a', NULL, '2021-10-23 22:12:54', '2021-10-23 22:12:54');
 
 --
 -- Indexes for dumped tables
@@ -207,7 +240,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -219,19 +252,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `restaurants`
 --
 ALTER TABLE `restaurants`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
