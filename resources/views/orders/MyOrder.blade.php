@@ -133,6 +133,8 @@
                                                             {{ $cp }} </b>
                                                         <br>
                                                         <b>ผู้สั่งซื้อ : {{ $menu->users_name }}</b>
+                                                        <br>
+                                                        <b>เวลาโดยประมาณ 15 นาที</b>
                                                         <input type="hidden" name="users_provider_id"
                                                             class="users_provider_id"
                                                             value="{{ $menu->users_provider_id }}">

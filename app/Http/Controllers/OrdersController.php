@@ -97,10 +97,10 @@ class OrdersController extends Controller
   public function fileUpload(Request $request)
   {
 
-    //$res_id = $request->query('res_id');
+    $res_id = $request->query('res_id');
 
     $res = DB::table('restaurants')
-      ->select('*')->where('user_id', 1)->limit(1)->get();
+      ->select('*')->where('user_id', $res_id)->limit(1)->get();
 
 
     return view("uploade")->with(['res' => $res]);
