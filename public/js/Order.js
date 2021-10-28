@@ -1,6 +1,6 @@
 var pathNow = window.location.pathname;
 if (pathNow == "/" || pathNow == "/MyOrders") {
-    setTimeout("location.reload(true);", 15000);
+    setTimeout("location.reload(true);", 10000);
 }
 
 $(document).ready(function () {
@@ -142,7 +142,7 @@ $(document).ready(function () {
             .closest(".product_data")
             .find(".users_provider_id")
             .val();
-        var orders_text = "ลบเลิกออเดอร์แล้ว";
+        var orders_text = "ลูกค้ามารับอาหารแล้ว";
         LineAlert(users_provider_id, orders_text);
 
         $.ajax({
@@ -156,7 +156,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 alertify.set("notifier", "position", "top-right");
-                alertify.success("ลบเลิกออเดอร์แล้ว");
+                alertify.success("ลูกค้ามารับอาหารแล้ว");
                 location.reload();
                 //cartload();
             },

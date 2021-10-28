@@ -44,6 +44,7 @@ class OrdersController extends Controller
         'orders.id as orders_id',
         'orders.user_id as or_uid',
         'orders.menu_id',
+        'orders.orders_time',
         'orders.orders_detail',
         'orders.order_quantity',
         'orders.orders_slip',
@@ -53,7 +54,7 @@ class OrdersController extends Controller
         'users.provider_id as users_provider_id'
       )
       // ->where('orders.user_id', '=', Auth::user()->id)
-      ->where('orders.orders_status', '!=', 4)
+      //->where('orders.orders_status', '!=', 4)
       ->orderBy('menus.restaurant_id', 'DESC')
       ->get();
 
@@ -82,7 +83,8 @@ class OrdersController extends Controller
         'orders_detail' => $request[$i]["orders_detail"],
         'order_quantity' => $request[$i]["order_quantity"],
         'orders_slip' => 1,
-        'orders_status' => 1
+        'orders_status' => 1,
+        'orders_time' => 0
       ];
     }
     Orders::insert($orders);

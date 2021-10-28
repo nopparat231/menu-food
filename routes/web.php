@@ -10,6 +10,7 @@ use App\Http\Controllers\RestaurantController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TimeOrdersController;
 
 use App\Models\Menu;
 /*
@@ -49,6 +50,9 @@ Route::post('update-to-cart',[AddToCartController::class, 'updatetocart']);
 Route::get('/load-cart-data', [AddToCartController::class, 'cartloadbyajax']);
 Route::delete('delete-from-cart',[AddToCartController::class, 'deletefromcart']);
 Route::get('clear-cart',[AddToCartController::class, 'clearcart']);
+
+Route::get('TimeOrder', [TimeOrdersController::class, 'index']);
+Route::post('timeorder_update', [TimeOrdersController::class, 'update']);
 
 // Line login
 Route::get('login/line', [LoginController::class, 'redirectToLine'])->name('login.line');

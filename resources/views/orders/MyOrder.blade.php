@@ -51,6 +51,8 @@
                                                             {{ $cp }} </b>
                                                         <br>
                                                         <b>ผู้สั่งซื้อ : {{ $menu->users_name }}</b>
+                                                        <br>
+                                                        <b>เวลาโดยประมาณ {{ $menu->orders_time }} นาที</b>
                                                         <input type="hidden" name="users_provider_id"
                                                             class="users_provider_id"
                                                             value="{{ $menu->users_provider_id }}">
@@ -62,6 +64,8 @@
                                                                 </p>
                                                             @elseif ($menu->orders_status == 3)
                                                                 <p style="color: green"> ทำอาหารเสร็จแล้ว</p>
+                                                            @elseif ($menu->orders_status == 4)
+                                                                <p style="color: rgb(0, 81, 156)"> ลูกค้ามารับอาหารแล้ว</p>     
 
                                                             @elseif ($menu->orders_status == 0)
                                                                 <p style="color: red"> ยกเลิกออเดอร์</p>
@@ -94,15 +98,17 @@
                                                 </button> --}}
 
 
-                                                    <button type="button" class="con-order-btn btn btn-lite"
+                                                   {{-- <button type="button" class="con-order-btn btn btn-lite"
                                                         style="background-color: hotpink;color: white">รับออเดอร์
-                                                    </button>
+                                                    </button> --}}
+                                                    <a href="/TimeOrder?id={{ $menu->orders_id }}" class=" btn btn-lite"
+                                                        style="background-color: hotpink;color: white">รับออเดอร์</a>
                                                     <button type="button" class="done-order-btn btn btn-lite"
                                                         style="background-color: green;color: white">ทำอาหารเสร็จแล้ว
                                                     </button>
                                                     <button type="button" class="can-order-btn btn btn-danger">ยกเลิกออเดอร์
                                                     </button>
-                                                    <button type="button" class="del-order-btn btn btn-dark">ลบออเดอร์
+                                                    <button type="button" class="del-order-btn btn btn-dark">ลูกค้ามารับอาหารแล้ว
                                                     </button>
 
 
@@ -134,7 +140,7 @@
                                                         <br>
                                                         <b>ผู้สั่งซื้อ : {{ $menu->users_name }}</b>
                                                         <br>
-                                                        <b>เวลาโดยประมาณ 15 นาที</b>
+                                                        <b>เวลาโดยประมาณ {{ $menu->orders_time }} นาที</b>
                                                         <input type="hidden" name="users_provider_id"
                                                             class="users_provider_id"
                                                             value="{{ $menu->users_provider_id }}">
@@ -146,13 +152,15 @@
                                                                 </p>
                                                             @elseif ($menu->orders_status == 3)
                                                                 <p style="color: green"> ทำอาหารเสร็จแล้ว</p>
+                                                            @elseif ($menu->orders_status == 4)
+                                                                <p style="color: rgb(0, 81, 156)"> ลูกค้ามารับอาหารแล้ว</p>    
 
                                                             @elseif ($menu->orders_status == 0)
                                                                 <p style="color: red"> ยกเลิกออเดอร์</p>
                                                             @elseif ($menu->orders_status == 5)
                                                                 <p style="color: rgb(194, 202, 118)"> จ่ายเงินแล้ว</p>
                                                             @else
-                                                                <a href="{{ url('file-upload') . '?id=' . $menu->orders_id. '&res_id=' . $menu->res_uid }}"
+                                                                <a href="{{ url('file-upload') . '?id=' . $menu->orders_id. '&res_id=' . $menu->res_uid . '&price=' . $menu->price}}"
                                                                     class=" btn btn-info">รอจ่ายเงิน</a>
                                                             @endif
 
@@ -181,7 +189,7 @@
                                                         <button type="button"
                                                             class="can-order-btn btn btn-danger">ยกเลิกออเดอร์
                                                         </button>
-                                                        <button type="button" class="del-order-btn btn btn-dark">ลบออเดอร์
+                                                        <button type="button" class="del-order-btn btn btn-dark">ลูกค้ามารับอาหารแล้ว
                                                         </button>
                                                     @endif
 
