@@ -16,7 +16,7 @@
 
                         {{ __('You are logged in!') }}
                         <h1>Add Line For Notify</h1>
-                        <img src="https://qr-official.line.me/sid/L/573pogdt.png">
+                        <img src="https://qr-official.line.me/sid/L/555nxjwf.png">
 
                         <form action="\hooks" method="get">
                             @csrf
