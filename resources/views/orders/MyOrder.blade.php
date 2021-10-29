@@ -160,7 +160,7 @@
                                                             @elseif ($menu->orders_status == 5)
                                                                 <p style="color: rgb(194, 202, 118)"> จ่ายเงินแล้ว</p>
                                                             @else
-                                                                <a href="{{ url('file-upload') . '?id=' . $menu->orders_id. '&res_id=' . $menu->res_uid . '&price=' . $menu->price}}"
+                                                                <a href="{{ url('file-upload') . '?id=' . $menu->orders_id. '&res_id=' . $menu->res_uid . '&price=' . $menu->price * $menu->order_quantity}}"
                                                                     class=" btn btn-info">รอจ่ายเงิน</a>
                                                             @endif
 
