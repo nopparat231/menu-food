@@ -24,6 +24,9 @@
                                     <label for="exampleInputPassword2">เลขบัญชี</label>
                                     <input type="text" name="restaurant_bank" class="form-control"
                                         id="exampleInputPassword2">
+                                    <label for="exampleInputPassword3">เบอร์โทรร้าน</label>
+                                    <input type="text" name="restaurant_tell" class="form-control"
+                                        id="exampleInputPassword3">
                                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                 </div>
 
@@ -45,6 +48,9 @@
                             <hr>
                             <h3>
                                 <b>{{ $res[0]->restaurant_bank }} </b>
+                            </h3>
+                            <h3>
+                                <b>เบอร์โทรร้าน :{{ $res[0]->restaurant_tell }} </b>
                             </h3>
                             <hr>
 

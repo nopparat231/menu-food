@@ -20,6 +20,7 @@
                                     <hr>
                                     <b style="color: rgb(33, 184, 19)"><h1>ราคา {{ request()->query('price') }} บาท</h1></b>
                                     <h1>เลขบัญชี {{ $res[0]->restaurant_bank }}</h1>
+                                    <h1>เบอร์โทรร้าน {{ $res[0]->restaurant_tell }}</h1>
                                 </div>
                                 <div class="panel-body">
                                     @if ($message = Session::get('success'))
